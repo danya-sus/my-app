@@ -1,0 +1,114 @@
+.login__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-basis: fill;
+    height: 100vh;
+}
+
+.login__form__content {
+    width: 30%;
+    height: 23%;
+    background-color: white;
+    border-radius: 2rem;
+    padding: 30px 50px;
+    box-shadow: 0 0 5px grey;
+}
+
+.login__form__content > hr {
+    border: 1px solid grey;
+    width: 100%;
+    padding: 0 0;
+    margin: 30px 0;
+    box-sizing: border-box;
+}
+
+.login__form__content__header {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.login__form__content__header > h2 {
+    margin: 0 0;
+}
+
+.login__form__content__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-gap: 30px;
+    box-sizing: border-box;
+}
+
+.login__form__content__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    grid-gap: 5px;
+}
+
+.register__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-basis: fill;
+    height: 100vh;
+}
+
+.register__form__content {
+    width: 30%;
+    height: auto;
+    background-color: white;
+    border-radius: 2rem;
+    padding: 30px 50px;
+    box-shadow: 0 0 5px grey;
+}
+
+.register__form__content > hr {
+    border: 1px solid grey;
+    width: 100%;
+    padding: 0 0;
+    margin: 30px 0;
+    box-sizing: border-box;
+}
+
+.register__form__content__header {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.register__form__content__header > h2 {
+    margin: 0 0;
+}
+
+.register__form__content__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 30px;
+    box-sizing: border-box;
+}
+
+.register__form__content__body__name, .register__form__content__body__password {
+    width: 100%;
+    display: flex;
+    grid-gap: 15px;
+}
+
+.register__form__content__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    grid-gap: 15px;
+}

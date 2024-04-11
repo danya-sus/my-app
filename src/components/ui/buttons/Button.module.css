@@ -1,0 +1,144 @@
+.customButton {
+    height: 40px;
+    width: 300px;
+    border: 0;
+    border-radius: 1rem;
+    font-size: large;
+    font-weight: bold;
+    transition: all ease-in-out 0.2s;
+	cursor: pointer;
+}
+
+.customButton:hover {
+    box-shadow: 0 0 5px grey;
+}
+
+.crossButton {
+	overflow: hidden;
+	position: relative;
+	border: none;
+	padding: 0;
+	width: 2em; height: 2em;
+	border-radius: 50%;
+	background: transparent;
+	color: #000000;
+	font: inherit;
+	text-indent: 100%;
+	cursor: pointer;
+	
+	&:focus {
+		outline: solid 0 transparent;
+		box-shadow: 0 0 0 2px #b8b8b8
+	}
+	
+	&:hover {
+		background: rgba(66, 66, 66, 0.1)
+	}
+	
+	&:before, &:after {
+		position: absolute;
+		top: 15%; left: calc(50% - .0625em);
+		width: .125em; height: 70%;
+		border-radius: .125em;
+		transform: rotate(45deg);
+		background: currentcolor;
+		content: ''
+	}
+	
+	&:after { transform: rotate(-45deg); }
+}
+
+.linkButton {
+	border: 0;
+	color: rgb(53, 53, 255);
+	text-decoration: underline;
+	background-color: inherit;
+	cursor: pointer;
+}
+
+.doubleArrowButton__left, 
+.doubleArrowButton__right, 
+.arrowButton__left, 
+.arrowButton__right {
+	height: 25px;
+	width: 25px;
+	cursor: pointer;
+	padding: 5px 5px;
+	background-size: cover;
+	border: 0;
+	background-color: inherit;
+}
+
+.doubleArrowButton__left {background-image: url('../../../images/arrow-double-left.png');}
+
+.doubleArrowButton__right {background-image: url('../../../images/arrow-double-right.png');}
+
+.arrowButton__left {background-image: url('../../../images/arrow-left.png');}
+
+.arrowButton__right {background-image: url('../../../images/arrow-right.png');}
+
+.doubleArrowButton__left:disabled, 
+.doubleArrowButton__right:disabled,
+.arrowButton__left:disabled,
+.arrowButton__right:disabled {
+	filter: invert(100%);
+}
+
+.doubleArrowButton__left:hover:disabled, 
+.doubleArrowButton__right:hover:disabled,
+.arrowButton__left:hover:disabled,
+.arrowButton__right:hover:disabled {
+	box-shadow: none;
+	border-radius: 0;
+	cursor: default;
+}
+
+.doubleArrowButton__left:hover, 
+.doubleArrowButton__right:hover, 
+.arrowButton__left:hover, 
+.arrowButton__right:hover {
+	box-shadow: 0 0 5px gray;
+	border-radius: 1rem;
+}
+
+.logoButton {
+    width: 130px;
+    height: 130px;
+    box-sizing: border-box;
+    background-color: inherit;
+	border-radius: 5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.logoButton > img {
+    box-sizing: border-box;
+    width: 70%;
+}
+
+.navigationButton {
+	width: 300px;
+	height: 100%;
+	background-color: inherit;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.navigationButton__link, .navigationButton__link__active {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+	font-size: 25px;
+	opacity: 0.8;
+}
+
+.navigationButton__link:hover {
+	opacity: 1;
+}
+
+.navigationButton__link__active {
+	opacity: 1;
+}

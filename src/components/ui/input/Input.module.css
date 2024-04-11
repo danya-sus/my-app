@@ -1,0 +1,44 @@
+.inputContainer {
+    width: 100%;
+    height: 40px;
+}
+
+.input {
+    width: 100%;
+    height: 40px;
+    padding: 0 0 0 30px;
+    margin: 0 0;
+    border: 1px solid grey;
+    border-radius: 0.3rem;
+    transition: all ease-in-out 0.3s;
+    box-sizing: border-box;
+    font-size: large;
+}
+
+.input:focus {
+    outline: none;
+    box-shadow: 0 0 10px grey;
+}
+
+.errorMessage {
+    display: none;
+    color: red;
+    font-size: small;
+}
+
+.input:valid:required[data-focused="true"] {
+    border: 1px solid green;
+}
+
+.input:valid:focus:required[data-focused="true"] {
+    box-shadow: 0 0 5px green;
+}
+
+.input:invalid[data-focused="true"] {
+    border: 1px solid red;
+    box-shadow: 0 0 5px red;
+}
+
+.input:invalid[data-focused="true"] ~ .errorMessage {
+    display: block;
+}

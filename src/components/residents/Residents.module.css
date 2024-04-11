@@ -1,0 +1,164 @@
+.actionsContainer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.actions {
+    width: 80%;
+    height: auto;
+    display: flex;
+    justify-content: flex-end;
+    margin: 15px 0;
+}
+
+.listContainer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.residentList {
+    width: 80%;
+    height: auto;
+    border-collapse: collapse;
+}
+
+.residentList__header {
+    text-align: left;
+    font-weight: bolder;
+    background-color: rgb(189, 189, 189);
+    height: 60px;
+}
+
+.residentList__header > tr > th {
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+
+.residentList__body {
+    text-align: left;
+    background-color: white;
+    height: 60px;
+    box-sizing: border-box;
+}
+
+.residentList__body > tr:hover > td {
+    box-sizing: border-box;
+}
+
+.residentList__body > tr:hover {
+    background-color: rgb(247, 247, 247);
+}
+
+.residentList__body > tr > td {
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+
+.pagingContainer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.paging {
+    width: 80%;
+    background-color: white;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 30px;
+    box-sizing: border-box;
+    grid-gap: 20px;
+}
+
+.paging__size {
+    display: flex;
+    align-items: center;
+    margin: 0 30px;
+}
+
+.paging__size > p {
+    margin: 0 14px 3px 0;
+}
+
+.paging__buttons {
+    display: flex;
+    grid-gap: 10px;
+    align-items: center;
+    margin: 0 0 0 30px;
+}
+
+.residentModalContainer {
+    display: none;
+}
+
+.residentModalContainer.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 600px;
+    background-color: white;
+}
+
+
+.residentContainer {
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.residentContainer__card {
+    width: 60%;
+    min-height: 80vh;
+    background-color: white;
+    padding: 30px 30px;
+    border-radius: 2rem;
+    display: flex;
+}
+
+.residentContainer__card__image {
+    width: 400px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.residentContainer__card__image > img {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.residentContainer__card > hr {
+    margin: 0 50px;
+}
+
+.residentContainer__card__info {
+    width: 100%;
+}
+
+.residentContainer__card__info__accomodation {
+    display: flex;
+    justify-content: space-between;
+}
+
+.residentContainer__card__info__contacts {
+    display: flex;
+    flex-direction: column;
+}
+
+.residentContainer__card__info__contacts__block {
+    display: flex;
+    justify-content: space-between;
+}
+
+.residentContainer__card__info__contacts__block > p {
+    margin: 5px 0;
+}
