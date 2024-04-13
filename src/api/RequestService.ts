@@ -2,14 +2,13 @@ import axios from "axios";
 import { IAddRequest, IRequestList, PagingParams } from "../contracts/Contracts";
 import BaseServise from "./BaseService";
 
-
 const REQUESTS_URL = "https://localhost:8081/api/requests";
 
 export default class RequestsService extends BaseServise {
     static async getAll(params: PagingParams) {
         try
         {
-            const response = await axios.get<IRequestList>(REQUESTS_URL, {params});
+            const response = await axios.get<IRequestList>(REQUESTS_URL, {params, headers: this.getAuthHeader()});
             return response.data
         }
         catch (e)
@@ -33,7 +32,7 @@ export default class RequestsService extends BaseServise {
     static async addRequest(request: IAddRequest) {
         try
         {
-            const response = await axios.post(REQUESTS_URL, request);
+            const response = await axios.post(REQUESTS_URL, request, {headers: this.getAuthHeader()});
 
             if (response.status === 200) {
                 return true
@@ -51,7 +50,7 @@ export default class RequestsService extends BaseServise {
     static async updateRequest(request: IAddRequest) {
         try
         {
-            const response = await axios.put(`${REQUESTS_URL}/${request.id}`, {request})
+            const response = await axios.put(`${REQUESTS_URL}/${request.id}`, request, {headers: this.getAuthHeader()})
 
             if (response.status === 200) {
                 return true
@@ -69,7 +68,7 @@ export default class RequestsService extends BaseServise {
     static async updateRequestStatus(requestId: string, statusId: number) {
         try
         {
-            const response = await axios.put(`${REQUESTS_URL}/${requestId}/status/${statusId}`);
+            const response = await axios.put(`${REQUESTS_URL}/${requestId}/status/${statusId}`, undefined, {headers: this.getAuthHeader()});
 
             if (response.status === 200) {
                 return true
@@ -87,7 +86,7 @@ export default class RequestsService extends BaseServise {
     static async deleteRequest(requestId: string) {
         try
         {
-            const response = await axios.delete(`${REQUESTS_URL}/${requestId}`);
+            const response = await axios.delete(`${REQUESTS_URL}/${requestId}`, {headers: this.getAuthHeader()});
 
             if (response.status === 200) {
                 return true

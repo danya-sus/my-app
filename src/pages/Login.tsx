@@ -9,7 +9,8 @@ type Props = {}
 export default function Login({}: Props) {
     const navigate = useNavigate();
     const {setIsAuth, setUser} = useContext(AuthContext);
-    const [login, setLogin] = useState('alex@test.com');
+    //const [login, setLogin] = useState('alex@test.com'); // Employee
+    const [login, setLogin] = useState('sergei@test.com'); // Resident
     const [password, setPassword] = useState('Password123!');
 
     const loginUser = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
