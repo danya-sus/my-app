@@ -31,14 +31,6 @@ const RequestList: FC<RequestListProps> = ({...props}) => {
         }
     }
 
-    const deleteRequest = async (id: string) => {
-        const response = await RequestsService.deleteRequest(id);
-
-        if (response) {
-            props.fetchRequests(1, 100);
-        }
-    }
-
     return (
         <div>
             <CustomButton onClick={() => setModalVisible(true)}>Добавить</CustomButton>
@@ -47,7 +39,6 @@ const RequestList: FC<RequestListProps> = ({...props}) => {
                     <RequestListItem 
                         key={request.id} 
                         request={request}
-                        deleteRequest={deleteRequest}
                     />)
             }
             <ModalWindow 

@@ -8,7 +8,7 @@ type TextAreaInputProps = {
 
 const TextAreaInput: FC<TextAreaInputProps> = ({...props}) => {
   return (
-    <textarea placeholder={props.placeholder} onChange={(e) => props.onChange(e)}>{props.value}</textarea>
+    <textarea placeholder={props.placeholder} onChange={(e) => props.onChange(e)} defaultValue={props.value}/>
   )
 }
 

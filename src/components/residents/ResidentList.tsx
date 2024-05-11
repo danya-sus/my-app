@@ -2,10 +2,8 @@ import React, { FC, useEffect, useState } from 'react'
 import { ICampus, IResidend } from '../../contracts/Contracts'
 import List from '../ui/list/List'
 import ResidentListItem from './ResidentListItem'
-import CustomInput from '../ui/input/CustomInput'
-import CustomButton from '../ui/buttons/CustomButton'
 import CampusesService from '../../api/CampusesService'
-import CustomSelect from '../ui/select/CustomSelect'
+import ResidentListFilter from './ResidentListFilter'
 
 type ResidentListProps = {
   residents: IResidend[],
@@ -72,31 +70,16 @@ const ResidentList: FC<ResidentListProps> = (props) => {
 
   return (
     <div>
-      <div style={{display: 'flex'}}>
-        <div style={{display: 'flex'}}>
-          <CustomInput placeholder='Введите комнату' onChange={(e) => setRoomFilter(e.target.value)} />
-          <CustomInput placeholder='Введите ФИО' onChange={(e) => setNameFilter(e.target.value)} />
-        </div>
-        {
-          campuses
-          ?
-          <CustomSelect children={campuses.map(e => {return {id: e.id, value: e.name}})} value={campuses[0].name} onChange={(e) => setCampusFilter(e.target.value)}/>
-          :
-          <></>
-        }
-        <h4>Удалённые проживающие: </h4>
-        <input 
-          type='checkbox' 
-          onChange={(e) => setDeleted(e.target.checked)}
-        />
-        <CustomButton onClick={() => 
-          {
-            setSkipCount(1);
-            setTakeCount(10);
-            props.fetchResidents(1, 10, deleted, {name: nameFilter, room: roomFilter, campus: campusFilter})
-          }
-        }>Поиск</CustomButton>
-      </div>
+      <ResidentListFilter 
+        campuses={campuses}
+        setRoomFilter={setRoomFilter}
+        setNameFilter={setNameFilter}
+        setCampusFilter={setCampusFilter}
+        setDeleted={setDeleted}
+        setSkipCount={setSkipCount}
+        setTakeCount={setTakeCount}
+        fetchResidents={() => props.fetchResidents(1, 10, deleted, {name: nameFilter, room: roomFilter, campus: campusFilter})}
+      />
       <List 
         headers={['Фамилия', 'Имя', 'Отчество', 'Общежитие', 'Комната', '']} 
         paging={

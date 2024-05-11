@@ -7,10 +7,9 @@ import RequestsService from '../../api/RequestService'
 
 type RequestListItemProps = {
   request: IRequest,
-  deleteRequest: (id: string) => {},
 }
 
-const RequestListItem: FC<RequestListItemProps> = ({request, deleteRequest}) => {
+const RequestListItem: FC<RequestListItemProps> = ({request}) => {
   const [visible, setVisible] = useState(false);
   const [, setStatus] = useState(1);
 

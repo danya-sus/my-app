@@ -8,13 +8,14 @@ type CustomInputProps = {
     type?: string,
     errormessage?: string,
     placeholder: string,
+    preinputtext?: string,
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => any
 }
 
 const CustomInput: FC<CustomInputProps> = ({...props}) => {
     const [focused, setFocused] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState<string>();
 
     const handleFocus = () => {
         setErrorMessage('');
@@ -45,6 +46,7 @@ const CustomInput: FC<CustomInputProps> = ({...props}) => {
                 onBlur={handleFocused} 
                 data-focused={focused.toString()} 
                 onChange={(e) => {props.onChange(e); handleOnChange(e)}} 
+                defaultValue={props.preinputtext}
             />
             {
                 props.required

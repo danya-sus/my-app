@@ -48,13 +48,15 @@ const RequestRedactForm: FC<RequestRedactFormProps> = ({...props}) => {
                     <CustomInput 
                         placeholder='Введите значение' 
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)} 
+                        preinputtext={props.request.title}
                     />
                     <TextAreaInput 
                         placeholder='Введите значение' 
                         onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setDescription(e.target.value)} 
+                        value={props.request.description}
                     />
                     <CustomSelect 
-                        value='Укажите тип' 
+                        value={requestTypes.filter(e => e.id === props.request.typeId)[0].name}
                         children={[{id: 'default', value: 'Укажите тип'}, ...requestTypes.map(e => {return {id: e.id, value: e.name}})]} 
                         onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setType(e.target.id)}
                     />
