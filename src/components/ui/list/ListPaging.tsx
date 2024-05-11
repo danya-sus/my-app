@@ -10,7 +10,7 @@ type ListPagingProps = {
     pageSize: number,
     takeCount: number,
     skipCount: number,
-    setTakeCount: (value: React.ChangeEvent<HTMLSelectElement>) => any,
+    setTakeCount: (value: string) => any,
     setSkipCount: (name: string) => any
 }
 
@@ -28,9 +28,20 @@ const ListPaging: FC<ListPagingProps> = (props) => {
     return `${start} - ${end} из ${props.total}`
   }
 
+  function* getTakeValues() {
+    yield {id: '10', value: '10'};
+    yield {id: '25', value: '25'};
+    yield {id: '50', value: '50'};
+    yield {id: '100', value: '100'};
+  }
+
   return (
     <div style={{display: 'flex', gridGap: '20px'}}>
-      <CustomSelect value={props.takeCount.toString()} children={['10', '25', '50', '100']} onChange={(value) => {props.setTakeCount(value)}} />
+      <CustomSelect 
+        value={props.takeCount.toString()} 
+        children={Array.from(getTakeValues())} 
+        onChange={(value) => {props.setTakeCount(value.target.selectedOptions[0].id)}} 
+      />
         <p>Страница {props.currentPage} из {props.totalPages}</p>
         <p>{calculateItems()}</p>
         <div>

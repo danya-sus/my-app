@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react'
-import { IAddRequest, IRequest, IRequestType } from '../../contracts/Contracts'
+import { IRequest, IRequestType } from '../../contracts/Contracts'
 import RequestTypesService from '../../api/RequestTypesService'
 import CustomInput from '../ui/input/CustomInput'
 import TextAreaInput from '../ui/input/TextAreaInput'
@@ -27,13 +27,10 @@ const RequestRedactForm: FC<RequestRedactFormProps> = ({...props}) => {
 
     const saveRequest = async () => {
         if (title && description && type !== 'Укажите тип' && requestTypes) {
-            const typeId = requestTypes.find(e => e.name === type)?.id;
-            if (typeId) {
-                if (await RequestsService.updateRequest({id: props.request.id, title: title, description: description, typeId: typeId})) {
-                    props.request.title = title;
-                    props.request.description = description;
-                    props.request.typeId = typeId
-                }
+            if (await RequestsService.updateRequest({id: props.request.id, title: title, description: description, typeId: type})) {
+                props.request.title = title;
+                props.request.description = description;
+                props.request.typeId = type
             }
         }
     }
@@ -58,8 +55,8 @@ const RequestRedactForm: FC<RequestRedactFormProps> = ({...props}) => {
                     />
                     <CustomSelect 
                         value='Укажите тип' 
-                        children={['Укажите тип', ...requestTypes.map(e => e.name)]} 
-                        onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setType(e.target.value)}
+                        children={[{id: 'default', value: 'Укажите тип'}, ...requestTypes.map(e => {return {id: e.id, value: e.name}})]} 
+                        onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setType(e.target.id)}
                     />
                     <CustomButton onClick={saveRequest}>Отправить</CustomButton>
                 </>

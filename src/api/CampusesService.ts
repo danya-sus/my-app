@@ -8,6 +8,19 @@ import BaseServise from "./BaseService";
 const CAMPUSES_URL = "https://localhost:8081/api/campuses";
 
 export default class CampusesService extends BaseServise {
+    static async getAll() {
+        try
+        {
+            const response = await axios.get<ICampus[]>(CAMPUSES_URL, {headers: this.getAuthHeader()});
+
+            return response.data;
+        }
+        catch (e) 
+        {
+            console.log(e);
+        }
+    }
+
     static async getCampus() {
         try
         {

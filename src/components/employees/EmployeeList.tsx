@@ -60,7 +60,7 @@ const EmployeeList: FC<EmployeeListProps> = (props) => {
                         pageSize: props.pagingParams.pageSize,
                         takeCount: takeCount,
                         skipCount: skipCount,
-                        setTakeCount: (value: React.ChangeEvent<HTMLSelectElement>) => setTakeCountHandler(parseInt(value.target.value)),
+                        setTakeCount: (value: string) => setTakeCountHandler(parseInt(value)),
                         setSkipCount: ((name: string) => setSkipCountHandler(name))
                     }
                 }

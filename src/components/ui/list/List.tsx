@@ -11,7 +11,7 @@ interface ListProps<T> {
       pageSize: number,
       takeCount: number,
       skipCount: number,
-      setTakeCount: (value: React.ChangeEvent<HTMLSelectElement>) => any,
+      setTakeCount: (value: string) => any,
       setSkipCount: (name: string) => any
     },
     items: T[],

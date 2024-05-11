@@ -210,6 +210,17 @@ export interface IRequestType {
     description: string
 }
 
+export interface IRoomList {
+    total: number,
+    totalPages: number,
+    pageSize: number,
+    currentPage: number,
+    data: {
+        isSuccess: boolean,
+        value: IRoom[]
+    }
+}
+
 export interface IRoom {
     id: string,
     block: number,

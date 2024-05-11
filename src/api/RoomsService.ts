@@ -1,14 +1,15 @@
 import axios from "axios";
-import { IRoom, PagingParams } from "../contracts/Contracts";
+import { IRoom, IRoomList, PagingParams } from "../contracts/Contracts";
+import BaseServise from "./BaseService";
 
 
 const ROOMS_URL = "https://localhost:8081/api/rooms";
 
-export default class RoomsService {
+export default class RoomsService extends BaseServise {
     static async getAll(params: PagingParams) {
         try
         {
-            const response = await axios.get(ROOMS_URL, {params});
+            const response = await axios.get<IRoomList>(ROOMS_URL, {params, headers: this.getAuthHeader()});
             return response.data;
         }
         catch (e)
@@ -20,7 +21,7 @@ export default class RoomsService {
     static async addRoom(room: IRoom) {
         try
         {
-            const response = await axios.post(ROOMS_URL, {room})
+            const response = await axios.post(ROOMS_URL, {room}, {headers: this.getAuthHeader()})
 
             if (response.status === 200) {
                 return true;
@@ -38,7 +39,7 @@ export default class RoomsService {
     static async updateRoom(room: IRoom) {
         try
         {
-            const response = await axios.put(`${ROOMS_URL}/${room.id}`, {room})
+            const response = await axios.put(`${ROOMS_URL}/${room.id}`, room, {headers: this.getAuthHeader()})
 
             if (response.status === 200) {
                 return true;
@@ -56,7 +57,7 @@ export default class RoomsService {
     static async deleteRoom(id: string) {
         try
         {
-            const response = await axios.delete(`${ROOMS_URL}/${id}`)
+            const response = await axios.delete(`${ROOMS_URL}/${id}`, {headers: this.getAuthHeader()})
 
             if (response.status === 200) {
                 return true;

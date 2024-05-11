@@ -1,14 +1,14 @@
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import { IResidend, IResidentList, PagingParams } from "../contracts/Contracts";
 import BaseServise from "./BaseService";
 
 const RESIDENTS_URL = "https://localhost:8081/api/residents";
 
 export default class ResidentsService extends BaseServise {
-    static async getAll(params: PagingParams) {
+    static async getAll(params: PagingParams, deleted?: boolean, filter?: {name: string, room: string, campus: string}) {
         try
         {
-            const response = await axios.get<IResidentList>(RESIDENTS_URL, {params, headers: this.getAuthHeader()});
+            const response = await axios.get<IResidentList>(RESIDENTS_URL, {params:{...params, deleted, ...filter}, headers: this.getAuthHeader()});
             return response.data;
         }
         catch (e) 
@@ -21,6 +21,18 @@ export default class ResidentsService extends BaseServise {
         try 
         {
             const response = await axios.get<IResidend>(`${RESIDENTS_URL}/${id}`, {headers: this.getAuthHeader()});
+            return response.data;
+        }
+        catch (e)
+        {
+            console.log(e)
+        }
+    }
+
+    static async getByRoom(roomId: string) {
+        try
+        {
+            const response = await axios.get<IResidend[]>(`${RESIDENTS_URL}/by-room/${roomId}`, {headers: this.getAuthHeader()});
             return response.data;
         }
         catch (e)

@@ -12,8 +12,8 @@ const Residents: FC = () => {
         currentPage: 0
     });
 
-    const fetchResidents = async (skip: number = 1, take: number = 10) => {
-        const response = await ResidentsService.getAll({PageNumber: skip, PageSize: take});
+    const fetchResidents = async (skip: number = 1, take: number = 10, deleted: boolean = false, filter?: {name: string, room: string, campus: string}) => {
+        const response = await ResidentsService.getAll({PageNumber: skip, PageSize: take}, deleted, filter);
 
         if (response) {
             setResidents(response.data.value)

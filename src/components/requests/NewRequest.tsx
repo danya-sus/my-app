@@ -26,15 +26,12 @@ const NewRequest: FC<NewRequestProps> = ({...props}) => {
 
     const sendRequest = () => {
         if (title && description && type !== 'Укажите тип' && requestTypes) {
-            const typeId = requestTypes.find(e => e.name === type)?.id;
-            if (typeId) {
-                props.sendNewRequest({
-                    id: crypto.randomUUID(),
-                    title: title,
-                    description: description,
-                    typeId: typeId
-                })
-            }
+            props.sendNewRequest({
+                id: crypto.randomUUID(),
+                title: title,
+                description: description,
+                typeId: type
+            })
         }
     }
 
@@ -68,8 +65,8 @@ const NewRequest: FC<NewRequestProps> = ({...props}) => {
                             <p>Тип заявки: </p>
                             <CustomSelect 
                                 value='Укажите тип' 
-                                children={['Укажите тип', ...requestTypes.map(e => e.name)]} 
-                                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setType(e.target.value)}
+                                children={[{id: 'default', value: 'Укажите тип'}, ...requestTypes.map(e => {return {id: e.id, value: e.name}})]} 
+                                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setType(e.target.selectedOptions[0].id)}
                             />
                         </div>
                     </div>

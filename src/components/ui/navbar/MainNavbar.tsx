@@ -17,6 +17,7 @@ const MainNavbar: FC<MainNavbarProps> = ({}) => {
           <NavLink to='profile'>Profile</NavLink>
           <NavLink to='requests'>Requests</NavLink>
           <NavLink to='employees'>Employees</NavLink>
+          <NavLink to='rooms'>Rooms</NavLink>
         </div>
         <div>
           {

@@ -10,8 +10,7 @@ import RegisterForm from "../components/auth/RegisterForm";
 import Login from "../pages/Login";
 import Home from "../pages/Home";
 import Employee from "../pages/Employee";
-import path from "path";
-
+import Blocks from "../pages/Blocks";
 
 export const router = createBrowserRouter([
     {
@@ -57,6 +56,10 @@ export const router = createBrowserRouter([
             {
                 path: 'register',
                 element: <RegisterForm />
+            },
+            {
+                path: 'rooms',
+                element: <Blocks />
             }
         ]
     }
