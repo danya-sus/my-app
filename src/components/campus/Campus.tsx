@@ -8,7 +8,6 @@ type CampusProps = {
 
 const Campus: FC<CampusProps> = ({...props}) => {
   const {user} = useContext(AuthContext);
-  console.log(user);
 
   const getAddress = () => {
     let address = props.campus.address;
