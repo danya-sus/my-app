@@ -10,6 +10,86 @@ import Home from "../pages/Home";
 import Employee from "../pages/Employee";
 import Blocks from "../pages/Blocks";
 
+// Navbar Routes
+export const getRoutesForNavbar = (roles?: string[]) => {
+    let routes: {path: string, name: string}[];
+    routes = [];
+
+    if (roles) {
+        roles
+            .filter(
+                (role, index, arr) => 
+                    arr.findIndex(t => t === role) === index
+            ).forEach((e) => {
+                routes = [...routes, ...(getRoutesByRoleForNavbar(e))]
+            }
+        )
+    }
+
+    return routes;
+}
+
+const getRoutesByRoleForNavbar = (role: string) => {
+    switch (role) {
+        case 'Resident': 
+            return (getResidentRoutesForNavbar())
+        case 'Commandant': 
+            return (getCommandantRoutesForNavbar())
+        default: return []
+    }
+}
+
+const getResidentRoutesForNavbar = () => {
+    return [
+        {
+            path: 'home',
+            name: "Дом"
+        },
+        {
+            path: 'profile',
+            name: 'Профиль'
+        },
+        {
+            path: 'requests',
+            name: 'Заявки'
+        }
+    ]
+}
+
+const getCommandantRoutesForNavbar = () => {
+    return [
+        {
+            path: 'home',
+            name: 'Дом'
+        },
+        {
+            path: 'profile',
+            name: 'Профиль'
+        },
+        {
+            path: 'requests',
+            name: 'Заявки'
+        },
+        {
+            path: 'residents',
+            name: 'Проживающие'
+        },
+        {
+            path: 'employees',
+            name: 'Работники'
+        },
+        {
+            path: 'things',
+            name: 'Вещи'
+        },
+        {
+            path: 'rooms',
+            name: 'Комнаты'
+        }
+    ]
+}
+
+// App Routes
 export const getRoutes = (roles?: string[]) => {
     let routes = getDefaultRoutes();
 
@@ -46,7 +126,7 @@ const getRoutesByRole = (role: string) => {
         case 'Resident': 
             return (getResidentRoutes())
         case 'Commandant': 
-            return (getEmployeeRoutes())
+            return (getCommandantRoutes())
         default: return []
     }
 }
@@ -68,7 +148,7 @@ const getResidentRoutes = () => {
     ]
 }
 
-const getEmployeeRoutes = () => {
+const getCommandantRoutes = () => {
     return [
         {
             path: 'home',

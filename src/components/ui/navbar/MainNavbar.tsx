@@ -1,35 +1,46 @@
-import React, { FC, useContext } from 'react'
+import React, { FC, useContext, useEffect, useState } from 'react'
 import { NavLink, Outlet } from 'react-router-dom';
 import LinkButton from '../buttons/LinkButton';
 import { AuthContext } from '../../../context/Context';
+import { getRoutesForNavbar } from '../../../routes/Routes';
 
-type MainNavbarProps = {}
+const MainNavbar: FC = () => {
+  const {user, isAuth, setIsAuth} = useContext(AuthContext);
+  const [routes, setRoutes] = useState<{path: string, name: string}[]>();
 
-const MainNavbar: FC<MainNavbarProps> = ({}) => {
-  const {isAuth, setIsAuth} = useContext(AuthContext);
+  useEffect(() => {
+    if (user) {
+      setRoutes(getRoutesForNavbar(user.roles))
+    }
+  }, [user]);
 
   return (
     <div>
       <div style={{display: 'flex', justifyContent: 'space-between'}}>
         <div>
-          <NavLink to='/home'>Home</NavLink>
-          <NavLink to='residents'>Residents</NavLink>
-          <NavLink to='profile'>Profile</NavLink>
-          <NavLink to='requests'>Requests</NavLink>
-          <NavLink to='employees'>Employees</NavLink>
-          <NavLink to='rooms'>Rooms</NavLink>
+          {
+            routes
+            ?
+            <>
+              {
+                routes.map((e) => <NavLink to={e.path} key={e.path}>{e.name}</NavLink>)
+              }
+            </>
+            :
+            <></>
+          }
         </div>
         <div>
           {
             !isAuth
             ?
             <>
-              <NavLink to='login'>Login</NavLink>
-              <NavLink to='register'>Register</NavLink>
+              <NavLink to='login'>Вход</NavLink>
+              <NavLink to='register'>Регистрация</NavLink>
             </>
             :
             <NavLink to='/' onClick={() => {localStorage.clear(); setIsAuth(false)}}>
-              <LinkButton>Logout</LinkButton>
+              <LinkButton>Выход</LinkButton>
             </NavLink>
           }
         </div>
