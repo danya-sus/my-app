@@ -5,10 +5,10 @@ import Campus from '../components/campus/Campus';
 import { AuthContext } from '../context/Context';
 
 const Home: FC = () => {
-    const [campus, setCampus] = useState<ICampus>();
+    const [campus, setCampus] = useState<ICampus[]>();
 
     const fetchCampus = async () => {
-        const response = await CampusesService.getCampus();
+        const response = await CampusesService.getAll();
         setCampus(response);
     }
 
@@ -23,7 +23,7 @@ const Home: FC = () => {
             ?
             <AuthContext.Consumer>
                 {() => 
-                    <Campus campus={campus} />
+                    <Campus campuses={campus} />
                 }
             </AuthContext.Consumer>
             : <></>
