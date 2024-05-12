@@ -1,5 +1,3 @@
-import { createBrowserRouter } from "react-router-dom";
-import App from "../App";
 import Residents from "../pages/Residents";
 import Resident from "../pages/Resident";
 import Profile from "../pages/Profile";
@@ -12,133 +10,101 @@ import Home from "../pages/Home";
 import Employee from "../pages/Employee";
 import Blocks from "../pages/Blocks";
 
-export const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <App />,
-        children: [
-            {
-                path: 'home',
-                element: <Home />
-            },
-            {
-                path: 'residents',
-                element: <Residents />
-            },
-            {
-                path: 'residents/:id',
-                element: <Resident />
-            },
-            {
-                path: 'profile',
-                element: <Profile />
-            },
-            {
-                path: 'things',
-                element: <Things />
-            },
-            {
-                path: 'requests',
-                element: <Requests />
-            },
-            {
-                path: 'employees',
-                element: <Employees />
-            },
-            {
-                path: 'employee/:id',
-                element: <Employee />
-            },
-            {
-                path: 'login',
-                element: <Login />
-            },
-            {
-                path: 'register',
-                element: <RegisterForm />
-            },
-            {
-                path: 'rooms',
-                element: <Blocks />
+export const getRoutes = (roles?: string[]) => {
+    let routes = getDefaultRoutes();
+
+    if (roles) {
+        roles
+            .filter(
+                (role, index, arr) => 
+                    arr.findIndex(t => t === role) === index
+            ).forEach((e) => {
+                routes = [...routes, ...getRoutesByRole(e)]
             }
-        ]
+        )
     }
-])
 
-export const routerByRole = (role: string) => {
-    return createBrowserRouter([
+    return routes;
+}
+
+const getDefaultRoutes = () => {
+    return [
         {
-            path: '/',
-            element: <App />,
-            children: [
-                {
-                    path: 'login',
-                    element: <Login />
-                },
-                {
-                    path: 'register',
-                    element: <RegisterForm />
-                }
-            ].concat(get(role)!)
+            path: 'login',
+            element: <Login />
+        },
+        {
+            path: 'register',
+            element: <RegisterForm />
         }
-    ])
+    ]
 }
 
-function get(role: string) {
+
+const getRoutesByRole = (role: string) => {
     switch (role) {
-        case 'resident' :
-            return getResidentRoutes;
-        case 'employee' :
-            return getEmployeeRoutes;
+        case 'Resident': 
+            return (getResidentRoutes())
+        case 'Commandant': 
+            return (getEmployeeRoutes())
+        default: return []
     }
 }
 
-const getResidentRoutes = [
-    {
-        path: 'home',
-        element: <App />
-    },
-    {
-        path: 'profile',
-        element: <Profile />
-    },
-    {
-        path: 'requests',
-        element: <Requests />
-    },
-];
+const getResidentRoutes = () => {
+    return [
+        {
+            path: 'home',
+            element: <Home />
+        },
+        {
+            path: 'profile',
+            element: <Profile />
+        },
+        {
+            path: 'requests',
+            element: <Requests />
+        }
+    ]
+}
 
-const getEmployeeRoutes = [
-    {
-        path: 'home',
-        element: <Home />
-    },
-    {
-        path: 'residents',
-        element: <Residents />
-    },
-    {
-        path: 'residents/:id',
-        element: <Resident />
-    },
-    {
-        path: 'profile',
-        element: <Profile />
-    },
-    {
-        path: 'things',
-        element: <Things />
-    },
-    {
-        path: 'requests',
-        element: <Requests />
-    },
-    {
-        path: 'employees',
-        element: <Employees />
-    },
-    {
-        path: 'employee/:id',
-        element: <Employee />
-    }
-]
+const getEmployeeRoutes = () => {
+    return [
+        {
+            path: 'home',
+            element: <Home />
+        },
+        {
+            path: 'profile',
+            element: <Profile />
+        },
+        {
+            path: 'requests',
+            element: <Requests />
+        },
+        {
+            path: 'residents',
+            element: <Residents />
+        },
+        {
+            path: 'residents/:id',
+            element: <Resident />
+        },
+        {
+            path: 'employees',
+            element: <Employees />
+        },
+        {
+            path: 'employee/:id',
+            element: <Employee />
+        },
+        {
+            path: 'things',
+            element: <Things />
+        },
+        {
+            path: 'rooms',
+            element: <Blocks />
+        }
+    ]
+}

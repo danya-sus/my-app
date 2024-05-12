@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
-import MainNavbar from './components/ui/navbar/MainNavbar';
 import { AuthContext } from './context/Context';
-import Home from './pages/Home';
 import { IUser } from './contracts/Contracts';
+import Main from './pages/Main';
 
 function App() {
   const [user, setUser] = useState<IUser>();
@@ -17,9 +16,11 @@ function App() {
   }
   
   return (
-    <AuthContext.Provider value={state}>
-      <MainNavbar />
-    </AuthContext.Provider>
+    <>
+      <AuthContext.Provider value={state}>
+        <Main />
+      </AuthContext.Provider>
+    </>
   );
 }
 
