@@ -5,9 +5,7 @@ import ProfileForm from '../components/profile/ProfileForm';
 import ResidentCard from '../components/residents/ResidentCard';
 import EmployeeCard from '../components/employees/EmployeeCard';
 
-type ProfileProps = {}
-
-const Profile: FC<ProfileProps> = ({}) => {
+const Profile: FC = () => {
   const [profile, setProfile] = useState<JSX.Element>();
 
   const fetchProfile = async () => {

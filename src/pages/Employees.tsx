@@ -3,9 +3,7 @@ import { IEmployee } from '../contracts/Contracts';
 import EmployeesService from '../api/EmployeesService';
 import EmployeeList from '../components/employees/EmployeeList';
 
-type EmployeesProps = {}
-
-const Employees: FC<EmployeesProps> = ({}) => {
+const Employees: FC = () => {
   const [employees, setEmployees] = useState<IEmployee[]>([]);
   const [pagingInfo, setPagingInfo] = useState({
     total: 0,

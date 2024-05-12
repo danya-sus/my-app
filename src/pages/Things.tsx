@@ -1,8 +1,6 @@
 import React, { FC } from 'react'
 
-type ThingsProps = {}
-
-const Things: FC<ThingsProps> = ({}) => {
+const Things: FC = () => {
   return (
     <div>Things</div>
   )

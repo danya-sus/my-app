@@ -1,8 +1,6 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-type Props = {}
-
-const NotFound = (props: Props) => {
+const NotFound: FC = () => {
   return (
     <div>NotFound</div>
   )

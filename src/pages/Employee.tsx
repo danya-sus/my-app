@@ -9,7 +9,7 @@ type EmployeeProps = {
     id: string
 }
 
-const Employee: FC = ({}) => {
+const Employee: FC = () => {
     const {id} = useParams<EmployeeProps>();
     const [employee, setEmployee] = useState<IEmployee>();
     const navigate = useNavigate();
@@ -27,6 +27,7 @@ const Employee: FC = ({}) => {
 
     useEffect(() => {
         fetchEmployee()
+        // eslint-disable-next-line
     }, [])
 
     return (

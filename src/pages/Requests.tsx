@@ -3,9 +3,7 @@ import { IRequest } from '../contracts/Contracts'
 import RequestsService from '../api/RequestService'
 import RequestList from '../components/requests/RequestList'
 
-type RequestsProps = {}
-
-const Requests: FC<RequestsProps> = ({}) => {
+const Requests: FC = () => {
   const [requests, setRequests] = useState<IRequest[]>()
   const [pagingInfo, setPagingInfo] = useState({
     total: 0,

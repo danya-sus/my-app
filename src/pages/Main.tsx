@@ -5,9 +5,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { getRoutes } from '../routes/Routes';
 import NotFound from './NotFound';
 
-type MainProps = {}
-
-const Main: FC<MainProps> = () => {
+const Main: FC = () => {
     const {user} = useContext(AuthContext);
     const [routes, setRoutes] = useState<React.ReactNode>();
 

@@ -9,7 +9,7 @@ type ResidentProps = {
     id: string
 }
 
-const Resident: FC = ({}) => {
+const Resident: FC = () => {
     const {id} = useParams<ResidentProps>();
     const [resident, setResident] = useState<IResidend>();
     const navigate = useNavigate();
@@ -25,6 +25,7 @@ const Resident: FC = ({}) => {
 
     useEffect(() => {
         fetchResidents()
+        // eslint-disable-next-line
     }, [])
     
     return (

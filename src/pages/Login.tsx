@@ -1,16 +1,14 @@
-import React, { useContext, useState } from 'react';
+import React, { FC, useContext, useState } from 'react';
 import AuthService from '../api/AuthService'
 import LoginForm from '../components/auth/LoginForm';
 import { AuthContext } from '../context/Context';
 import { useNavigate } from 'react-router';
 
-type Props = {}
-
-export default function Login({}: Props) {
+const Login: FC = () => {
     const navigate = useNavigate();
     const {setIsAuth, setUser} = useContext(AuthContext);
-    //const [login, setLogin] = useState('alex@test.com'); // Resident
-    const [login, setLogin] = useState('sergei@test.com'); // Commandant
+    const [login, setLogin] = useState('alex@test.com'); // Commandant
+    //const [login, setLogin] = useState('sergei@test.com'); // Resident
     const [password, setPassword] = useState('Password123!');
 
     const loginUser = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -25,13 +23,14 @@ export default function Login({}: Props) {
         }
     }
 
+    
     return (
-        <>
-            <AuthContext.Consumer>
-                {() => (
-                    <LoginForm setLogin={setLogin} setPassword={setPassword} loginUser={loginUser}/>
-                )}
-            </AuthContext.Consumer>
-        </>
+        <AuthContext.Consumer>
+            {() => (
+                <LoginForm setLogin={setLogin} setPassword={setPassword} loginUser={loginUser}/>
+            )}
+        </AuthContext.Consumer>
     )
 }
+
+export default Login;

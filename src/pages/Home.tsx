@@ -4,9 +4,7 @@ import CampusesService from '../api/CampusesService';
 import Campus from '../components/campus/Campus';
 import { AuthContext } from '../context/Context';
 
-type HomeProps = {}
-
-const Home: FC<HomeProps> = ({}) => {
+const Home: FC = () => {
     const [campus, setCampus] = useState<ICampus>();
 
     const fetchCampus = async () => {

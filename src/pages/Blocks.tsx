@@ -3,9 +3,7 @@ import { IRoom } from '../contracts/Contracts'
 import RoomsService from '../api/RoomsService';
 import BlocksTable from '../components/rooms/BlocksTable';
 
-type BlocksProps = {}
-
-const Blocks: FC<BlocksProps> = () => {
+const Blocks: FC = () => {
     const [rooms, setRooms] = useState<IRoom[]>();
 
     const fetchRooms = async () => {
