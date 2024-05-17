@@ -1,5 +1,4 @@
 import React, { FC } from 'react'
-import CustomInput from './CustomInput'
 
 type RedactFormProps = {
     redactMode: boolean,

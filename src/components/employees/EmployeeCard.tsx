@@ -1,13 +1,22 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { IEmployee } from '../../contracts/Contracts'
 import Modal from '../ui/modal/Modal'
 import CustomButton from '../ui/buttons/CustomButton'
+import RedactForm from '../ui/input/RedactForm'
+import CustomInput from '../ui/input/CustomInput'
 
 type EmployeeCardProps = {
     employee: IEmployee
 }
 
 const EmployeeCard: FC<EmployeeCardProps> = ({employee}) => {
+    const [redactMode, setRedactMode] = useState<boolean>(false);
+
+    const [email, setEmail] = useState<string>(employee.email);
+    const [phoneNumber, setPhoneNumber] = useState<string>(employee.phoneNumber);
+    const [mothersPhoneNumber, setMothersPhoneNumber] = useState<string>(employee.phoneNumber);
+    const [fathersPhoneNumber, setFathersPhoneNumber] = useState<string>(employee.phoneNumber);
+
     const getName = () => `${employee.lastName} ${employee.firstName} ${employee.middleName}`.trim()
     const getBirthPlace = () => {
         const birthplace = employee.passport.birthPlace;
@@ -51,21 +60,45 @@ const EmployeeCard: FC<EmployeeCardProps> = ({employee}) => {
                     </div>
                 </Modal>
                 <Modal title='Контактные данные'>
-                    <div>
-                        <p>Электроная почта: </p>
-                        <p>{employee.email}</p>
+                <div>
+                    <p>Электроная почта: </p>
+                        <RedactForm redactMode={redactMode} value={employee.email}>
+                            <CustomInput 
+                                placeholder='Введите электронную почту' 
+                                onChange={(e) => setEmail(e.target.value)} 
+                                preinputtext={employee.email}
+                            />
+                        </RedactForm>
                     </div>
                     <div>
                         <p>Номер телефона: </p>
-                        <p>{employee.phoneNumber}</p>
+                        <RedactForm redactMode={redactMode} value={employee.phoneNumber}>
+                            <CustomInput 
+                                placeholder='Введите номер телефона' 
+                                onChange={(e) => setPhoneNumber(e.target.value)} 
+                                preinputtext={employee.phoneNumber} 
+                            />
+                        </RedactForm>
                     </div>
                     <div>
                         <p>Номер телефона матери: </p>
-                        <p>{employee.mothersPhoneNumber}</p>
+                        <RedactForm redactMode={redactMode} value={employee.mothersPhoneNumber}>
+                            <CustomInput 
+                                placeholder='Введите номер телефона матери' 
+                                onChange={(e) => setMothersPhoneNumber(e.target.value)} 
+                                preinputtext={employee.mothersFullName} 
+                            />
+                        </RedactForm>
                     </div>
                     <div>
                         <p>Номер телефона отца: </p>
-                        <p>{employee.fathersPhoneNumber}</p>
+                        <RedactForm redactMode={redactMode} value={employee.fathersPhoneNumber}>
+                            <CustomInput 
+                                placeholder='Введите номер телефона отца' 
+                                onChange={(e) => setFathersPhoneNumber(e.target.value)} 
+                                preinputtext={employee.fathersFullName} 
+                            />
+                        </RedactForm>
                     </div>
                 </Modal>
                 <Modal title='Паспортные данные'>
@@ -106,8 +139,18 @@ const EmployeeCard: FC<EmployeeCardProps> = ({employee}) => {
                             <h3>Не задано</h3>
                         }
                     </Modal>
-                    <CustomButton onClick={() => {}}>Редактировать</CustomButton>
-                    <CustomButton onClick={() => {}}>Удалить</CustomButton>
+                    {
+                        redactMode
+                        ?
+                        <>
+                            <CustomButton onClick={() => {}}>Сохранить</CustomButton>
+                            <CustomButton onClick={() => {setRedactMode(false)}}>Отменить</CustomButton>
+                        </>
+                        :
+                        <>
+                            <CustomButton onClick={() => {setRedactMode(true)}}>Редактировать</CustomButton>
+                        </>
+                    }
             </div>
         </div>
     )
