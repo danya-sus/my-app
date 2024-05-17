@@ -18,6 +18,30 @@ export default class RoomsService extends BaseServise {
         }
     }
 
+    static async getById(id: string) {
+        try 
+        {
+            const response = await axios.get<IRoom>(`${ROOMS_URL}/${id}`, {headers: this.getAuthHeader()});
+            return response.data;
+        }
+        catch (e)
+        {
+            console.log(e)
+        }
+    }
+
+    static async getByCurrentUser() {
+        try
+        {
+            const response = await axios.get<IRoom>(`${ROOMS_URL}/by-current-user`, {headers: this.getAuthHeader()});
+            return response.data
+        }
+        catch (e) 
+        {
+            console.log(e)
+        }
+    }
+
     static async addRoom(room: IRoom) {
         try
         {

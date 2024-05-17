@@ -9,7 +9,7 @@ import Login from "../pages/Login";
 import Home from "../pages/Home";
 import Employee from "../pages/Employee";
 import Blocks from "../pages/Blocks";
-import Room from "../pages/Room";
+import ResidentRoom from "../pages/ResidentRoom";
 
 // Navbar Routes
 export const getRoutesForNavbar = (roles?: string[]) => {
@@ -63,6 +63,10 @@ const getResidentRoutesForNavbar = () => {
         {
             path: 'requests',
             name: 'Заявки'
+        },
+        {
+            path: 'room',
+            name: 'Моя комната'
         }
     ]
 }
@@ -236,8 +240,8 @@ const getResidentRoutes = () => {
             element: <Requests />
         },
         {
-            path: 'rooms:{id}',
-            element: <Room />
+            path: 'room',
+            element: <ResidentRoom />
         }
     ]
 }
@@ -308,10 +312,6 @@ const getStudentCouncilRoutes = () => {
         {
             path: "rooms",
             element: <Blocks />
-        },
-        {
-            path: "rooms:{id}",
-            element: <Room />
         }
     ]
 }
@@ -342,11 +342,7 @@ const getDutyOfficerRoutes = () => {
         {
             path: "rooms",
             element: <Blocks />
-        },
-        {
-            path: "rooms:{id}",
-            element: <Room />
-        },
+        }
     ]
 }
 
@@ -355,10 +351,6 @@ const getSupplyManagerRoutes = () => {
         {
             path: "rooms",
             element: <Blocks />
-        },
-        {
-            path: "rooms:{id}",
-            element: <Room />
         },
         {
             path: "things",
