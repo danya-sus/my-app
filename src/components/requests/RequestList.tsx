@@ -5,6 +5,7 @@ import CustomButton from '../ui/buttons/CustomButton'
 import ModalWindow from '../ui/modal/ModalWindow'
 import NewRequest from './NewRequest'
 import RequestsService from '../../api/RequestService'
+import CustomInput from '../ui/input/CustomInput'
 
 type RequestListProps = {
     requests: IRequest[],
@@ -14,11 +15,13 @@ type RequestListProps = {
         currentPage: number,
         pageSize: number
     },
-    fetchRequests: (skip: number, take: number) => any
+    residentRequests: boolean,
+    fetchRequests: (skip: number, take: number, room?: string) => any
 }
 
 const RequestList: FC<RequestListProps> = ({...props}) => {
     const [modalVisible, setModalVisible] = useState(false);
+    const [roomFilter, setRoomFilter] = useState('');
 
     const sendNewRequest = async (newRequest: IAddRequest) => {
         const response = await RequestsService.addRequest(newRequest);
@@ -33,7 +36,16 @@ const RequestList: FC<RequestListProps> = ({...props}) => {
 
     return (
         <div>
-            <CustomButton onClick={() => setModalVisible(true)}>Добавить</CustomButton>
+            {
+                props.residentRequests
+                ?
+                <CustomButton onClick={() => setModalVisible(true)}>Добавить</CustomButton>
+                :
+                <div>
+                    <CustomInput placeholder='Введите комнату' onChange={(e) => {setRoomFilter(e.target.value)}} />
+                    <CustomButton onClick={() => {props.fetchRequests(1, 100, roomFilter)}}>Поиск</CustomButton>
+                </div>
+            }
             {
                 props.requests.map((request: IRequest) => 
                     <RequestListItem 

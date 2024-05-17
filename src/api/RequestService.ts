@@ -5,10 +5,10 @@ import BaseServise from "./BaseService";
 const REQUESTS_URL = "https://localhost:8081/api/requests";
 
 export default class RequestsService extends BaseServise {
-    static async getAll(params: PagingParams) {
+    static async getAll(params: PagingParams, room?: string) {
         try
         {
-            const response = await axios.get<IRequestList>(REQUESTS_URL, {params, headers: this.getAuthHeader()});
+            const response = await axios.get<IRequestList>(REQUESTS_URL, {params: {params, room}, headers: this.getAuthHeader()});
             return response.data
         }
         catch (e)
