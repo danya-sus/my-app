@@ -9,6 +9,7 @@ import Login from "../pages/Login";
 import Home from "../pages/Home";
 import Employee from "../pages/Employee";
 import Blocks from "../pages/Blocks";
+import Room from "../pages/Room";
 
 // Navbar Routes
 export const getRoutesForNavbar = (roles?: string[]) => {
@@ -35,6 +36,16 @@ const getRoutesByRoleForNavbar = (role: string) => {
             return (getResidentRoutesForNavbar())
         case 'Commandant': 
             return (getCommandantRoutesForNavbar())
+        case 'Fixer' : 
+            return (getFixerRoutesForNavbar())
+        case 'StudantCouncil' : 
+            return (getStudentCouncilRoutesForNavbar())
+        case 'SecurityGuard' : 
+            return (getSecurityGuearRoutesForNavbar())
+        case 'DutyOfficer' :
+            return (getDutyOfficerRoutesForNavbar())
+        case 'SupplyManager' :
+            return (getSupplyManagerRoutesForNavbar())
         default: return []
     }
 }
@@ -89,6 +100,75 @@ const getCommandantRoutesForNavbar = () => {
     ]
 }
 
+const getStudentCouncilRoutesForNavbar = () => {
+    return [
+        {
+            path: "requests",
+            name: 'Заявки'
+        },
+        {
+            path: "residents",
+            name: 'Проживающие'
+        },
+        {
+            path: "home",
+            name: 'Дом'
+        },
+        {
+            path: "profile",
+            name: 'Профиль'
+        },
+        {
+            path: "rooms",
+            name: 'Комнаты'
+        }
+    ]
+}
+
+const getSecurityGuearRoutesForNavbar = () => {
+    return [
+        {
+            path: "residents",
+            name: "Проживающие"
+        }
+    ]
+}
+
+const getDutyOfficerRoutesForNavbar = () => {
+    return [
+        {
+            path: "residents",
+            name: 'Проживающие'
+        },
+        {
+            path: "rooms",
+            name: 'Комнаты'
+        },
+    ]
+}
+
+const getSupplyManagerRoutesForNavbar = () => {
+    return [
+        {
+            path: "rooms",
+            name: 'Комнаты'
+        },
+        {
+            path: "things",
+            name: 'Вещи'
+        }
+    ]
+}
+
+const getFixerRoutesForNavbar = () => {
+    return [
+        {
+            path: "requests",
+            name: 'Заявки'
+        }
+    ]
+}
+
 // App Routes
 export const getRoutes = (roles?: string[]) => {
     let routes = getDefaultRoutes();
@@ -127,6 +207,16 @@ const getRoutesByRole = (role: string) => {
             return (getResidentRoutes())
         case 'Commandant': 
             return (getCommandantRoutes())
+        case 'Fixer' : 
+            return (getFixerRoutes())
+        case 'StudantCouncil' : 
+            return (getStudentCouncilRoutes())
+        case 'SecurityGuard' : 
+            return (getSecurityGuearRoutes())
+        case 'DutyOfficer' :
+            return (getDutyOfficerRoutes())
+        case 'SupplyManager' :
+            return (getSupplyManagerRoutes())
         default: return []
     }
 }
@@ -144,6 +234,10 @@ const getResidentRoutes = () => {
         {
             path: 'requests',
             element: <Requests />
+        },
+        {
+            path: 'rooms:{id}',
+            element: <Room />
         }
     ]
 }
@@ -185,6 +279,99 @@ const getCommandantRoutes = () => {
         {
             path: 'rooms',
             element: <Blocks />
+        }
+    ]
+}
+
+const getStudentCouncilRoutes = () => {
+    return [
+        {
+            path: "requests",
+            element: <Requests />
+        },
+        {
+            path: "residents",
+            element: <Residents />
+        },
+        {
+            path: "residents:{id}",
+            element: <Resident />
+        },
+        {
+            path: "home",
+            element: <Home />
+        },
+        {
+            path: "profile",
+            element: <Profile />
+        },
+        {
+            path: "rooms",
+            element: <Blocks />
+        },
+        {
+            path: "rooms:{id}",
+            element: <Room />
+        }
+    ]
+}
+
+const getSecurityGuearRoutes = () => {
+    return [
+        {
+            path: "residents",
+            element: <Residents />
+        },
+        {
+            path: "residents:{id}",
+            element: <Resident />
+        }
+    ]
+}
+
+const getDutyOfficerRoutes = () => {
+    return [
+        {
+            path: "residents",
+            element: <Residents />
+        },
+        {
+            path: "residents:{id}",
+            element: <Resident />
+        },
+        {
+            path: "rooms",
+            element: <Blocks />
+        },
+        {
+            path: "rooms:{id}",
+            element: <Room />
+        },
+    ]
+}
+
+const getSupplyManagerRoutes = () => {
+    return [
+        {
+            path: "rooms",
+            element: <Blocks />
+        },
+        {
+            path: "rooms:{id}",
+            element: <Room />
+        },
+        {
+            path: "things",
+            element: <Things />
+        }
+    ]
+}
+
+const getFixerRoutes = () => {
+    return [
+        {
+            path: "requests",
+            element: <Requests />
         }
     ]
 }
