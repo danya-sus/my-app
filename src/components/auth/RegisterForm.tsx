@@ -5,10 +5,12 @@ import CustomButton from '../ui/buttons/CustomButton'
 import LinkButton from '../ui/buttons/LinkButton'
 import classes from './Auth.module.css'
 import CrossButton from '../ui/buttons/CrossButton'
+import { useNavigate } from 'react-router'
 
 type RegisterFormProps = {}
 
 const RegisterForm: FC<RegisterFormProps> = ({}) => {
+  const navigate = useNavigate();
   const [values, setValues] = useState({
     email: '',
     lastName: '',
@@ -109,7 +111,9 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
             backgroundColor='rgb(35, 150, 31)'
             color='white'
             onClick={(e) => register(e)}>Зарегистрироваться</CustomButton>
-          <LinkButton>У меня есть аккаунт</LinkButton>
+          <div onClick={() => navigate('/login')}>
+            <LinkButton>У меня есть аккаунт</LinkButton>
+          </div>
         </div>
       </div>
     </form>
