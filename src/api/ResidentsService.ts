@@ -44,7 +44,7 @@ export default class ResidentsService extends BaseServise {
     static async updateResident(resident: IResidend) {
         try
         {
-            const response = await axios.put(`${RESIDENTS_URL}/${resident.id}`, {resident});
+            const response = await axios.put(`${RESIDENTS_URL}/${resident.id}`, {resident}, {headers: this.getAuthHeader()});
 
             if (response.status === 200) {
                 return true;

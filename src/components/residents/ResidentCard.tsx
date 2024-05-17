@@ -1,9 +1,11 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { IResidend } from '../../contracts/Contracts'
 import Modal from '../ui/modal/Modal'
 import CustomButton from '../ui/buttons/CustomButton'
 import ResidentsService from '../../api/ResidentsService'
 import { useNavigate } from 'react-router'
+import RedactForm from '../ui/input/RedactForm'
+import CustomInput from '../ui/input/CustomInput'
 
 type ResidentCardProps = {
     resident: IResidend,
@@ -11,6 +13,12 @@ type ResidentCardProps = {
 
 const ResidentCard: FC<ResidentCardProps> = ({resident}) => {
     const navigate = useNavigate();
+    const [redactMode, setRedactMode] = useState<boolean>(false);
+
+    const [email, setEmail] = useState<string>(resident.email);
+    const [phoneNumber, setPhoneNumber] = useState<string>(resident.phoneNumber);
+    const [mothersPhoneNumber, setMothersPhoneNumber] = useState<string>(resident.phoneNumber);
+    const [fathersPhoneNumber, setFathersPhoneNumber] = useState<string>(resident.phoneNumber);
 
     const getName = () => `${resident.lastName} ${resident.firstName} ${resident.middleName}`.trim()
     const getAccomodation = () => `${resident.campus.name} - ${resident.room.block}${resident.room.blockCode}`
@@ -22,6 +30,24 @@ const ResidentCard: FC<ResidentCardProps> = ({resident}) => {
     const getRegPlace = () => {
         const registerplace = resident.passport.registeredPlace;
         return `${registerplace.country}, г. ${registerplace.town}, ул. ${registerplace.street}, д. ${registerplace.house}, к. ${registerplace.corps}`
+    }
+
+    const updateResident = async () => {
+        let updatedResident = resident;
+
+        updatedResident.email = email;
+        updatedResident.phoneNumber = phoneNumber;
+        updatedResident.mothersPhoneNumber = mothersPhoneNumber;
+        updatedResident.fathersPhoneNumber = fathersPhoneNumber;
+
+        let response = await ResidentsService.updateResident(updatedResident);
+
+        if (response) {
+            resident = updatedResident
+            setRedactMode(false);
+        }
+
+        alert("Что-то пошло не так")
     }
 
     const deleteResident = async () => {
@@ -56,19 +82,43 @@ const ResidentCard: FC<ResidentCardProps> = ({resident}) => {
                     <Modal title='Контактные данные'>
                         <div>
                             <p>Электроная почта: </p>
-                            <p>{resident.email}</p>
+                            <RedactForm redactMode={redactMode} value={resident.email}>
+                                <CustomInput 
+                                    placeholder='Введите электронную почту' 
+                                    onChange={(e) => setEmail(e.target.value)} 
+                                    preinputtext={resident.email}
+                                />
+                            </RedactForm>
                         </div>
                         <div>
                             <p>Номер телефона: </p>
-                            <p>{resident.phoneNumber}</p>
+                            <RedactForm redactMode={redactMode} value={resident.phoneNumber}>
+                                <CustomInput 
+                                    placeholder='Введите номер телефона' 
+                                    onChange={(e) => setPhoneNumber(e.target.value)} 
+                                    preinputtext={resident.phoneNumber} 
+                                />
+                            </RedactForm>
                         </div>
                         <div>
                             <p>Номер телефона матери: </p>
-                            <p>{resident.mothersPhoneNumber}</p>
+                            <RedactForm redactMode={redactMode} value={resident.mothersPhoneNumber}>
+                                <CustomInput 
+                                    placeholder='Введите номер телефона матери' 
+                                    onChange={(e) => setMothersPhoneNumber(e.target.value)} 
+                                    preinputtext={resident.mothersFullName} 
+                                />
+                            </RedactForm>
                         </div>
                         <div>
                             <p>Номер телефона отца: </p>
-                            <p>{resident.fathersPhoneNumber}</p>
+                            <RedactForm redactMode={redactMode} value={resident.fathersPhoneNumber}>
+                                <CustomInput 
+                                    placeholder='Введите номер телефона отца' 
+                                    onChange={(e) => setFathersPhoneNumber(e.target.value)} 
+                                    preinputtext={resident.fathersFullName} 
+                                />
+                            </RedactForm>
                         </div>
                     </Modal>
                     <Modal title='Паспортные данные'>
@@ -109,8 +159,19 @@ const ResidentCard: FC<ResidentCardProps> = ({resident}) => {
                             <h3>Не задано</h3>
                         }
                     </Modal>
-                    <CustomButton onClick={() => {}}>Редактировать</CustomButton>
-                    <CustomButton onClick={deleteResident}>Удалить</CustomButton>
+                    {
+                        redactMode
+                        ?
+                        <>
+                            <CustomButton onClick={() => updateResident()}>Сохранить</CustomButton>
+                            <CustomButton onClick={() => setRedactMode(false)}>Отмена</CustomButton>
+                        </>
+                        :
+                        <>
+                            <CustomButton onClick={() => {setRedactMode(true)}}>Редактировать</CustomButton>
+                            <CustomButton onClick={deleteResident}>Удалить</CustomButton>
+                        </>
+                    }
                 </div>
             </div>
         </div>

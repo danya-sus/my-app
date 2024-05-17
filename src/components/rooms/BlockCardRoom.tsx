@@ -8,6 +8,7 @@ import CustomSelect from '../ui/select/CustomSelect'
 import TextAreaInput from '../ui/input/TextAreaInput'
 import MyCalendar from '../ui/calendar/MyCalendar'
 import RoomsService from '../../api/RoomsService'
+import RedactForm from '../ui/input/RedactForm'
 
 type BlockCardRoomProps = {
     room: IRoom,
@@ -70,45 +71,25 @@ const BlockCardRoom: FC<BlockCardRoomProps> = ({...props}) => {
         <div>
             <div style={{display: 'flex'}}>
                 <p>Рейтинг комнаты: </p>
-                {
-                    redactMode
-                    ?
+                <RedactForm redactMode={redactMode} value={room.roomRating}>
                     <CustomSelect 
                         children={Array.from(getRaitingValues())} 
                         value={room.roomRating.toString()} 
                         onChange={(e) => setRoomRaiting(e.target.value)}
                     />
-                    :
-                    <p>{room.roomRating}</p>
-                }
+                </RedactForm>
             </div>
             <div style={{display: 'flex'}}>
                 <p>Дата ремонта: </p>
-                {
-                    redactMode
-                    ?
+                <RedactForm redactMode={redactMode} value={(getDate(room.repairDate))}>
                     <MyCalendar value={repairDate} onClickDay={(date) => setRepairDate(date)} />
-                    :
-                    <p>{(getDate(room.repairDate))}</p>
-                }
+                </RedactForm>
             </div>
             <div>
                 <p>Замечания: </p>
-                {
-                    redactMode
-                    ?
+                <RedactForm redactMode={redactMode} value={room.remarks ? room.remarks : 'Не найдено'}>
                     <TextAreaInput placeholder='' onChange={(e) => setRemarks(e.target.value)} />
-                    :
-                    <>
-                        {
-                            room.remarks
-                            ?
-                            <p>{room.remarks}</p>
-                            :
-                            <p>Не найдено</p>
-                        }
-                    </>
-                }
+                </RedactForm>
             </div>
             <div>
                 <p>Проживающие</p>
