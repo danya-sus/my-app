@@ -6,6 +6,7 @@ import LinkButton from '../ui/buttons/LinkButton'
 import classes from './Auth.module.css'
 import CrossButton from '../ui/buttons/CrossButton'
 import { useNavigate } from 'react-router'
+import MyCalendar from '../ui/calendar/MyCalendar'
 
 type RegisterFormProps = {}
 
@@ -16,10 +17,14 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
     lastName: '',
     firstName: '',
     middleName: '',
-    birthday: '',
+    birthday: new Date(),
     password: '',
     confirmPassword: ''
   })
+
+  const setBirthday = (e: Date) => {
+    setValues({...values, ['birthday']: e})
+  }
 
   const setValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValues({ ...values, [e.target.name]: e.target.value})
@@ -27,16 +32,20 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
 
   const register = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    await AuthService.register(
+    const response = await AuthService.register(
       {
         email: values.email,
         password: values.password,
         firstName: values.firstName,
         lastName: values.lastName,
         middleName: values.middleName,
-        birthDate: values.birthday
+        birthDate: values.birthday.toLocaleDateString()
       }
     );
+
+    if (response) {
+      navigate('/login')
+    }
   }
 
   return (
@@ -72,11 +81,10 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
               onChange={(e) => setValue(e)}
             />
           </div>
-          <CustomInput 
-            name='birthday' 
-            placeholder='Дата рождения' 
-            onChange={(e) => setValue(e)}
-          />
+          <div>
+            <p>Дата рождения</p>
+            <MyCalendar onClickDay={(e) => setBirthday(e)}/>
+          </div>
           <CustomInput 
             required 
             name='email'

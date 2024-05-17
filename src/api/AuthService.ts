@@ -46,7 +46,11 @@ export default class AuthService extends BaseServise {
                 middleName: userData.middleName,
                 birthDate: userData.birthDate
             })
-            return response;
+            if (response.status === 200) {
+                return true
+            }
+
+            return false
         }
         catch (e)
         {
