@@ -7,8 +7,8 @@ import { useNavigate } from 'react-router';
 const Login: FC = () => {
     const navigate = useNavigate();
     const {setIsAuth, setUser} = useContext(AuthContext);
-    //const [login, setLogin] = useState('alex@test.com'); // Commandant
-    const [login, setLogin] = useState('sergei@test.com'); // Resident
+    const [login, setLogin] = useState('alex@test.com'); // Commandant
+    //const [login, setLogin] = useState('sergei@test.com'); // Resident
     const [password, setPassword] = useState('Password123!');
 
     const loginUser = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
