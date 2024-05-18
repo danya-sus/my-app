@@ -186,3 +186,33 @@
 .residentContainer__card__info__contacts__block > p {
     margin: 5px 0;
 }
+
+.resident__card {
+    display: flex;
+    justify-content: center;
+    grid-gap: 30px;
+}
+
+.resident__card > hr {
+    margin: 0 0;
+}
+
+.resident__card__body {
+
+}
+
+.resident__card__body__item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.resident__card__body__item__input {
+    width: 350px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.resident__card__btns {
+    display: flex;
+    grid-gap: 30px;
+}

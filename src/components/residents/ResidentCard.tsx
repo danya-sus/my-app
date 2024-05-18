@@ -62,27 +62,29 @@ const ResidentCard: FC<ResidentCardProps> = ({resident}) => {
     }
 
     return (
-        <div>
-            <div style={{display: 'flex'}}>
-                <div>
-                    {
-                        resident.photoId
-                        ?
-                        <p>Photo</p>
-                        :
-                        <img src={require('../../images/default-profile-photo.png')} alt='Profile'/>
-                    }
+        <div className={classes.resident__card}>
+            <div>
+                {
+                    resident.photoId
+                    ?
+                    <p>Photo</p>
+                    :
+                    <img src={require('../../images/default-profile-photo.png')} alt='Profile'/>
+                }
+            </div>
+            <hr />
+            <div className={classes.resident__card__body}>
+                <h2>{getName()}</h2>
+                <hr />
+                <div style={{display: 'flex'}}>
+                    <h3>{getAccomodation()}</h3>
+                    <h3>{getStatus()}</h3>
                 </div>
                 <hr />
-                <div>
-                    <h2>{getName()}</h2>
-                    <div style={{display: 'flex'}}>
-                        <h3>{getAccomodation()}</h3>
-                        <h3>{getStatus()}</h3>
-                    </div>
-                    <Modal title='Контактные данные'>
-                        <div>
-                            <p>Электроная почта: </p>
+                <Modal title='Контактные данные'>
+                    <div className={classes.resident__card__body__item}>
+                        <p>Электроная почта: </p>
+                        <div className={classes.resident__card__body__item__input}>
                             <RedactForm redactMode={redactMode} value={resident.email}>
                                 <CustomInput 
                                     placeholder='Введите электронную почту' 
@@ -91,8 +93,10 @@ const ResidentCard: FC<ResidentCardProps> = ({resident}) => {
                                 />
                             </RedactForm>
                         </div>
-                        <div>
-                            <p>Номер телефона: </p>
+                    </div>
+                    <div className={classes.resident__card__body__item}>
+                        <p>Номер телефона: </p>
+                        <div className={classes.resident__card__body__item__input}>
                             <RedactForm redactMode={redactMode} value={resident.phoneNumber}>
                                 <CustomInput 
                                     placeholder='Введите номер телефона' 
@@ -101,8 +105,10 @@ const ResidentCard: FC<ResidentCardProps> = ({resident}) => {
                                 />
                             </RedactForm>
                         </div>
-                        <div>
-                            <p>Номер телефона матери: </p>
+                    </div>
+                    <div className={classes.resident__card__body__item}>
+                        <p>Номер телефона матери: </p>
+                        <div className={classes.resident__card__body__item__input}>
                             <RedactForm redactMode={redactMode} value={resident.mothersPhoneNumber}>
                                 <CustomInput 
                                     placeholder='Введите номер телефона матери' 
@@ -111,8 +117,10 @@ const ResidentCard: FC<ResidentCardProps> = ({resident}) => {
                                 />
                             </RedactForm>
                         </div>
-                        <div>
-                            <p>Номер телефона отца: </p>
+                    </div>
+                    <div className={classes.resident__card__body__item}>
+                        <p>Номер телефона отца: </p>
+                        <div className={classes.resident__card__body__item__input}>
                             <RedactForm redactMode={redactMode} value={resident.fathersPhoneNumber}>
                                 <CustomInput 
                                     placeholder='Введите номер телефона отца' 
@@ -121,59 +129,61 @@ const ResidentCard: FC<ResidentCardProps> = ({resident}) => {
                                 />
                             </RedactForm>
                         </div>
-                    </Modal>
-                    <Modal title='Паспортные данные'>
-                        {
-                            resident.passport
-                            ?
-                            <>
-                                <div>
-                                    <p>Серия/номер паспорта: </p>
-                                    <p>{resident.passport.passportSeries} {resident.passport.passportNumber}</p>
-                                </div>
-                                <div>
-                                    <p>Выдан: </p>
-                                    <p>{resident.passport.issuedBy}</p>
-                                </div>
-                                <div>
-                                    <p>Код подразделения: </p>
-                                    <p>{resident.passport.issuedCode}</p>
-                                </div>
-                                <div>
-                                    <p>Дата выдачи: </p>
-                                    <p>{resident.passport.issuedDate}</p>
-                                </div>
-                                <div>
-                                    <p>Пол: </p>
-                                    <p>{resident.passport.gender}</p>
-                                </div>
-                                <div>
-                                    <p>Место рождения: </p>
-                                    <p>{getBirthPlace()}</p>
-                                </div>
-                                <div>
-                                    <p>Место регистрации: </p>
-                                    <p>{getRegPlace()}</p>
-                                </div>
-                            </>
-                            :
-                            <h3>Не задано</h3>
-                        }
-                    </Modal>
+                    </div>
+                </Modal>
+                <hr />
+                <Modal title='Паспортные данные'>
                     {
-                        redactMode
+                        resident.passport
                         ?
                         <>
-                            <CustomButton onClick={() => updateResident()}>Сохранить</CustomButton>
-                            <CustomButton onClick={() => setRedactMode(false)}>Отмена</CustomButton>
+                            <div className={classes.resident__card__body__item}>
+                                <p>Серия/номер паспорта: </p>
+                                <p>{resident.passport.passportSeries} {resident.passport.passportNumber}</p>
+                            </div>
+                            <div className={classes.resident__card__body__item}>
+                                <p>Выдан: </p>
+                                <p>{resident.passport.issuedBy}</p>
+                            </div>
+                            <div className={classes.resident__card__body__item}>
+                                <p>Код подразделения: </p>
+                                <p>{resident.passport.issuedCode}</p>
+                            </div>
+                            <div className={classes.resident__card__body__item}>
+                                <p>Дата выдачи: </p>
+                                <p>{resident.passport.issuedDate}</p>
+                            </div>
+                            <div className={classes.resident__card__body__item}>
+                                <p>Пол: </p>
+                                <p>{resident.passport.gender}</p>
+                            </div>
+                            <div className={classes.resident__card__body__item}>
+                                <p>Место рождения: </p>
+                                <p>{getBirthPlace()}</p>
+                            </div>
+                            <div className={classes.resident__card__body__item}>
+                                <p>Место регистрации: </p>
+                                <p>{getRegPlace()}</p>
+                            </div>
                         </>
                         :
-                        <>
-                            <CustomButton onClick={() => {setRedactMode(true)}}>Редактировать</CustomButton>
-                            <CustomButton onClick={deleteResident}>Удалить</CustomButton>
-                        </>
+                        <h3>Не задано</h3>
                     }
-                </div>
+                </Modal>
+                <hr />
+                {
+                    redactMode
+                    ?
+                    <div className={classes.resident__card__btns}>
+                        <CustomButton onClick={() => updateResident()}>Сохранить</CustomButton>
+                        <CustomButton onClick={() => setRedactMode(false)}>Отмена</CustomButton>
+                    </div>
+                    :
+                    <div className={classes.resident__card__btns}>
+                        <CustomButton onClick={() => {setRedactMode(true)}}>Редактировать</CustomButton>
+                        <CustomButton onClick={deleteResident}>Удалить</CustomButton>
+                    </div>
+                }
             </div>
         </div>
     )
