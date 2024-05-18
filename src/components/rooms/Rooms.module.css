@@ -61,6 +61,11 @@
     grid-gap: 10px;
 }
 
+.blockCardRoom__item__calendar {
+    box-sizing: border-box;
+    width: 100%;
+}
+
 .blockItem_raiting_0 {
     color: red;
 }

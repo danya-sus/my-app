@@ -1,0 +1,21 @@
+.employee {
+    display: flex;
+    grid-gap: 20px;
+}
+
+.employee__body {
+    width: 600px;
+}
+
+.employee__body__item {
+    display: flex;
+    justify-content: space-between;
+    grid-gap: 30px;
+}
+
+.employee__body__item__input {
+    width: 350px;
+    max-width: 500px;
+    display: flex;
+    justify-content: flex-end;
+}

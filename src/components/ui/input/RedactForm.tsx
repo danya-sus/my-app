@@ -16,7 +16,15 @@ const RedactForm: FC<RedactFormProps> = ({...props}) => {
                 {props.children}
             </>
             :
-            <p>{props.value}</p>
+            <>
+              {
+                props.value
+                ?
+                props.value
+                :
+                'не задано'
+              }
+            </>
         }
     </>
   )

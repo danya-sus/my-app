@@ -6,6 +6,7 @@ import ResidentsService from '../../api/ResidentsService'
 import { useNavigate } from 'react-router'
 import RedactForm from '../ui/input/RedactForm'
 import CustomInput from '../ui/input/CustomInput'
+import classes from './Residents.module.css'
 
 type ResidentCardProps = {
     resident: IResidend,

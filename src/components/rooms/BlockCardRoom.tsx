@@ -88,9 +88,11 @@ const BlockCardRoom: FC<BlockCardRoomProps> = ({...props}) => {
             </div>
             <div className={classes.blockCardRoom__item}>
                 <p>Замечания: </p>
-                <RedactForm redactMode={redactMode} value={room.remarks ? room.remarks : 'Не найдено'}>
-                    <TextAreaInput placeholder='' onChange={(e) => setRemarks(e.target.value)}/>
-                </RedactForm>
+                <div className={classes.blockCardRoom__item__calendar}>
+                    <RedactForm redactMode={redactMode} value={room.remarks ? room.remarks : 'Не найдено'}>
+                        <TextAreaInput placeholder='' onChange={(e) => setRemarks(e.target.value)}/>
+                    </RedactForm>
+                </div>
             </div>
             <div>
                 <p>Проживающие:</p>

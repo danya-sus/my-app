@@ -26,7 +26,7 @@ const Profile: FC = () => {
   }, [])
   
   return (
-    <>
+    <div style={{display: 'flex', justifyContent: 'center'}}>
       {
         profile
         ?
@@ -36,7 +36,7 @@ const Profile: FC = () => {
         : 
         <></>
       }
-    </>
+    </div>
   )
 }
 
