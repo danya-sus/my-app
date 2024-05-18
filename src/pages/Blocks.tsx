@@ -19,16 +19,25 @@ const Blocks: FC = () => {
     }, [])
 
     return (
-        <>
-            <h3>Блоки</h3>
+        <div style={
             {
-                rooms
-                ?
-                <BlocksTable rooms={rooms} />
-                :
-                <p>Ничего не найдено</p>
+                display:'flex', 
+                flexDirection:'column', 
+                justifyContent:'center', 
+                alignItems:'center'
             }
-        </>
+        }>
+            <div>
+                <h3>Блоки</h3>
+                {
+                    rooms
+                    ?
+                    <BlocksTable rooms={rooms} />
+                    :
+                    <p>Ничего не найдено</p>
+                }
+            </div>
+        </div>
     )
 }
 

@@ -1,6 +1,7 @@
 import React, { FC, useState } from 'react'
 import { IRoom } from '../../contracts/Contracts'
 import BlockItem from './BlockItem'
+import classes from './Rooms.module.css'
 
 type BlocksTableProps = {
     rooms: IRoom[]
@@ -36,7 +37,7 @@ const BlocksTable: FC<BlocksTableProps> = ({...props}) => {
         for (let i = 16; i > 1; i--) {
             yield (
                 <tr key={i}>
-                    <td>Этаж {i}</td>
+                    <td><span style={{fontWeight:'bolder'}}>Этаж {i}</span></td>
                     {Array.from(getBlocks(getBlocksByFloor(rooms, i)))}
                 </tr>
             )
@@ -44,13 +45,13 @@ const BlocksTable: FC<BlocksTableProps> = ({...props}) => {
     }
 
     return (
-        <>
+        <div className={classes.rooms}>
             <table>
                 <tbody>
                     {[Array.from(getFloors(rooms))]}
                 </tbody>
             </table>
-        </>
+        </div>
     )
 }
 

@@ -3,6 +3,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 import LinkButton from '../buttons/LinkButton';
 import { AuthContext } from '../../../context/Context';
 import { getRoutesForNavbar } from '../../../routes/Routes';
+import classes from './Navbar.module.css';
 
 const MainNavbar: FC = () => {
   const {user, isAuth, setIsAuth} = useContext(AuthContext);
@@ -16,31 +17,31 @@ const MainNavbar: FC = () => {
 
   return (
     <div>
-      <div style={{display: 'flex', justifyContent: 'space-between'}}>
-        <div>
+      <div className={classes.navbar}>
+        <div className={classes.navbar__routes}>
           {
             routes
             ?
             <>
               {
-                routes.map((e) => <NavLink to={e.path} key={e.path}>{e.name}</NavLink>)
+                routes.map((e) => <NavLink to={e.path} key={e.path} className={classes.navbar__routes__item}>{e.name}</NavLink>)
               }
             </>
             :
             <></>
           }
         </div>
-        <div>
+        <div className={classes.navbar__auth}>
           {
             !isAuth
             ?
             <>
-              <NavLink to='login'>Вход</NavLink>
-              <NavLink to='register'>Регистрация</NavLink>
+              <NavLink to='login' className={classes.navbar__auth__login}>Вход</NavLink>
+              <NavLink to='register' className={classes.navbar__auth__btn}>Регистрация</NavLink>
             </>
             :
-            <NavLink to='/' onClick={() => {localStorage.clear(); setIsAuth(false)}}>
-              <LinkButton>Выход</LinkButton>
+            <NavLink to='/' onClick={() => {localStorage.clear(); setIsAuth(false)}} className={classes.navbar__auth__logout}>
+              Выход
             </NavLink>
           }
         </div>

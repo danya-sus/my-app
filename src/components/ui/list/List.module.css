@@ -1,0 +1,7 @@
+
+.list__paging {
+    display: flex;
+    grid-gap: 30px;
+    align-items: center;
+    justify-content: flex-end;
+}

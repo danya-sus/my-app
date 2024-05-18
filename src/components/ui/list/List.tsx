@@ -1,6 +1,7 @@
 import React from 'react'
 import ListHeader from './ListHeader'
 import ListPaging from './ListPaging'
+import classes from './List.module.css'
 
 interface ListProps<T> {
     headers?: string[],
@@ -20,7 +21,7 @@ interface ListProps<T> {
 
 export default function List<T>(props: ListProps<T>) {
   return (
-    <div>
+    <div className={classes.list}>
       <table>
         {
           props.headers

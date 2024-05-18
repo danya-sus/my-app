@@ -13,11 +13,15 @@ const BlockCard: FC<BlockCardProps> = ({...props}) => {
     const [room, setRoom] = useState<IRoom>();
 
     return (
-        <div style={{backgroundColor: 'white'}}>
+        <div className={classes.blockCard}>
             <h2>Блок {props.blockNum}</h2>
-            {
-                props.rooms.map((e) => <p onClick={() => setRoom(e)} key={e.id}>{e.block}{e.blockCode}</p>)
-            }
+            <hr />
+            <div className={classes.blockCard__rooms}>
+                {
+                    props.rooms.map((e) => <p onClick={() => setRoom(e)} key={e.id}>{e.block}{e.blockCode}</p>)
+                }
+            </div>
+            <hr />
             {
                 room
                 ?

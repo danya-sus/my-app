@@ -42,3 +42,8 @@
 .input:invalid[data-focused="true"] ~ .errorMessage {
     display: block;
 }
+
+.textArea {
+    width: 100%;
+    min-height: 100px;
+}

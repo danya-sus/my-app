@@ -3,6 +3,7 @@ import CustomButton from '../ui/buttons/CustomButton'
 import CustomSelect from '../ui/select/CustomSelect'
 import CustomInput from '../ui/input/CustomInput'
 import { ICampus } from '../../contracts/Contracts'
+import classes from './Residents.module.css';
 
 type ResidentListFilterProps = {
     campuses: ICampus[] | undefined,
@@ -17,8 +18,8 @@ type ResidentListFilterProps = {
 
 const ResidentListFilter: FC<ResidentListFilterProps> = ({...props}) => {
     return (
-        <div style={{display: 'flex'}}>
-            <div style={{display: 'flex'}}>
+        <div className={classes.list__filter}>
+            <div className={classes.list__filter__inputs}>
                 <CustomInput placeholder='Введите комнату' onChange={(e) => props.setRoomFilter(e.target.value)} />
                 <CustomInput placeholder='Введите ФИО' onChange={(e) => props.setNameFilter(e.target.value)} />
             </div>
@@ -33,11 +34,13 @@ const ResidentListFilter: FC<ResidentListFilterProps> = ({...props}) => {
                 :
                 <></>
             }
-            <h4>Удалённые проживающие: </h4>
-            <input 
-                type='checkbox' 
-                onChange={(e) => props.setDeleted(e.target.checked)}
-            />
+            <div className={classes.list__filter__deleted}>
+                <h4>Удалённые проживающие: </h4>
+                <input 
+                    type='checkbox' 
+                    onChange={(e) => props.setDeleted(e.target.checked)}
+                />
+            </div>
             <CustomButton onClick={() => 
                 {
                     props.setSkipCount(1);

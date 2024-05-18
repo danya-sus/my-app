@@ -1,3 +1,27 @@
+.list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.list__filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 30px;
+    margin-bottom: 40px;
+}
+
+.list__filter__inputs {
+    display: flex;
+    grid-gap: 10px;
+}
+
+.list__filter__deleted {
+    display: flex;
+}
+
 .actionsContainer {
     width: 100%;
     height: auto;

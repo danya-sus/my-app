@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import CustomSelect from '../select/CustomSelect';
 import DoubleArrowButton from '../buttons/DoubleArrowButton';
 import ArrowButton from '../buttons/ArrowButton';
+import classes from './List.module.css';
 
 type ListPagingProps = {
     total: number,
@@ -36,7 +37,7 @@ const ListPaging: FC<ListPagingProps> = (props) => {
   }
 
   return (
-    <div style={{display: 'flex', gridGap: '20px'}}>
+    <div className={classes.list__paging}>
       <CustomSelect 
         value={props.takeCount.toString()} 
         children={Array.from(getTakeValues())} 

@@ -9,6 +9,7 @@ import TextAreaInput from '../ui/input/TextAreaInput'
 import MyCalendar from '../ui/calendar/MyCalendar'
 import RoomsService from '../../api/RoomsService'
 import RedactForm from '../ui/input/RedactForm'
+import classes from './Rooms.module.css';
 
 type BlockCardRoomProps = {
     room: IRoom,
@@ -18,7 +19,7 @@ type BlockCardRoomProps = {
 const BlockCardRoom: FC<BlockCardRoomProps> = ({...props}) => {
     const [room, setRoom] = useState<IRoom>(props.room);
 
-    const [residents, setResidents] = useState<IResidend[]>();
+    const [residents, setResidents] = useState<IResidend[]>([]);
     const [redactMode, setRedactMode] = useState(false);
     const [roomRaiting, setRoomRaiting] = useState(room.roomRating)
     const [remarks, setRemarks] = useState(room.remarks);
@@ -68,8 +69,8 @@ const BlockCardRoom: FC<BlockCardRoomProps> = ({...props}) => {
     }, [props.room])
 
     return (
-        <div>
-            <div style={{display: 'flex'}}>
+        <div className={classes.blockCardRoom}>
+            <div className={classes.blockCardRoom__item}>
                 <p>Рейтинг комнаты: </p>
                 <RedactForm redactMode={redactMode} value={room.roomRating}>
                     <CustomSelect 
@@ -79,20 +80,20 @@ const BlockCardRoom: FC<BlockCardRoomProps> = ({...props}) => {
                     />
                 </RedactForm>
             </div>
-            <div style={{display: 'flex'}}>
+            <div className={classes.blockCardRoom__item}>
                 <p>Дата ремонта: </p>
                 <RedactForm redactMode={redactMode} value={(getDate(room.repairDate))}>
                     <MyCalendar value={repairDate} onClickDay={(date) => setRepairDate(date)} />
                 </RedactForm>
             </div>
-            <div>
+            <div className={classes.blockCardRoom__item}>
                 <p>Замечания: </p>
                 <RedactForm redactMode={redactMode} value={room.remarks ? room.remarks : 'Не найдено'}>
-                    <TextAreaInput placeholder='' onChange={(e) => setRemarks(e.target.value)} />
+                    <TextAreaInput placeholder='' onChange={(e) => setRemarks(e.target.value)}/>
                 </RedactForm>
             </div>
             <div>
-                <p>Проживающие</p>
+                <p>Проживающие:</p>
                 {
                     residents
                     ?
@@ -109,13 +110,14 @@ const BlockCardRoom: FC<BlockCardRoomProps> = ({...props}) => {
                     <p>Не найдено</p>
                 }
             </div>
+            <hr />
             {
                 redactMode
                 ?
-                <>
+                <div className={classes.blockCardRoom__btns}>
                     <CustomButton onClick={() => updateRoom()}>Сохранить</CustomButton>
                     <CustomButton onClick={() => setRedactMode(false)}>Отменить</CustomButton>
-                </>
+                </div>
                 :
                 <CustomButton onClick={() => setRedactMode(true)}>Редактировать</CustomButton>
             }

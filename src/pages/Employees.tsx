@@ -31,7 +31,9 @@ const Employees: FC = () => {
   }, [])
 
   return (
-    <EmployeeList employees={employees} pagingParams={pagingInfo} fetchEmployees={fetchEmployees} />
+    <div style={{display:'flex', justifyContent:'center'}}>
+      <EmployeeList employees={employees} pagingParams={pagingInfo} fetchEmployees={fetchEmployees} />
+    </div>
   )
 }
 

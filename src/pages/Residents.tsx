@@ -31,7 +31,9 @@ const Residents: FC = () => {
     }, []);
 
     return (
-        <ResidentList residents={residents} pagingParams={pagingInfo} fetchResidents={fetchResidents}/>
+        <div style={{display:'flex', justifyContent:'center'}}>
+            <ResidentList residents={residents} pagingParams={pagingInfo} fetchResidents={fetchResidents}/>
+        </div>
     )
 }
 

@@ -4,6 +4,7 @@ import List from '../ui/list/List'
 import ResidentListItem from './ResidentListItem'
 import CampusesService from '../../api/CampusesService'
 import ResidentListFilter from './ResidentListFilter'
+import classes from './Residents.module.css'
 
 type ResidentListProps = {
   residents: IResidend[],
@@ -69,7 +70,7 @@ const ResidentList: FC<ResidentListProps> = (props) => {
   }
 
   return (
-    <div>
+    <div className={classes.list}>
       <ResidentListFilter 
         campuses={campuses}
         setRoomFilter={setRoomFilter}

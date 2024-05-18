@@ -1,4 +1,65 @@
-.blockItem {}
+.rooms {}
+
+.blockItem {
+    margin: 0 10px;
+    padding: 0 20px;
+    border: 1px solid grey;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blockItem:hover {
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.blockCard {
+    background-color: white;
+    width: 800px;
+    height: auto;
+    padding: 30px 30px;
+    border-radius: 1rem;
+    margin-top: 10px;
+}
+
+.blockCard > h2 {
+    margin: 0 0;
+}
+
+.blockCard__rooms {
+    display: flex;
+    grid-gap: 10px;
+}
+
+.blockCard__rooms > p {
+    border: 1px solid grey;
+    padding: 10px 20px;
+    border-radius: 1rem;
+}
+
+.blockCard__rooms > p:hover {
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.blockCardRoom {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 20px;
+}
+
+.blockCardRoom__item {
+    display: flex;
+    align-items: center;
+    grid-gap: 30px;
+}
+
+.blockCardRoom__btns {
+    display: flex;
+    grid-gap: 10px;
+}
 
 .blockItem_raiting_0 {
     color: red;

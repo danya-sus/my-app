@@ -20,7 +20,7 @@
 	padding: 0;
 	width: 2em; height: 2em;
 	border-radius: 50%;
-	background: transparent;
+	background: rgba(128, 128, 128, 0.514);
 	color: #000000;
 	font: inherit;
 	text-indent: 100%;
@@ -32,7 +32,7 @@
 	}
 	
 	&:hover {
-		background: rgba(66, 66, 66, 0.1)
+		background: rgba(255, 255, 255, 0.726)
 	}
 	
 	&:before, &:after {
