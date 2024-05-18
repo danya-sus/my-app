@@ -1,0 +1,49 @@
+.list {}
+
+.list__filter {
+    display: flex;
+    grid-gap: 10px;
+    margin-bottom: 30px;
+}
+
+.list__body {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 30px;
+}
+
+.list__body__item {
+    border: 1px solid grey;
+    border-radius: 1rem;
+    padding: 20px 30px;
+}
+
+.list__body__item__btns {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    grid-gap: 20px;
+}
+
+.redactForm {
+    width: 700px;
+    height: auto;
+    background-color: white;
+    padding: 30px 30px;
+    border-radius: 1rem;
+}
+
+.redactForm__textArea {
+    height: 300px;
+    margin-top: 20px;
+}
+
+.redactForm__select {
+    height: 50px;
+    margin-top: 20px;
+}
+
+.redactForm__btn {
+    display: flex;
+    justify-content: flex-end;
+}

@@ -39,13 +39,13 @@ const Requests: FC = () => {
   }, [])
 
   return (
-    <>
+    <div style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
       {
         requests
         ? <RequestList residentRequests={residentRequests} requests={requests} pagingParams={pagingInfo} fetchRequests={fetchRequests}/>
         : <></>
       }
-    </>
+    </div>
   )
 }
 

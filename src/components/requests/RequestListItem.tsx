@@ -4,6 +4,7 @@ import CustomButton from '../ui/buttons/CustomButton'
 import ModalWindow from '../ui/modal/ModalWindow'
 import RequestRedactForm from './RequestRedactForm'
 import RequestsService from '../../api/RequestService'
+import classes from './Requests.module.css'
 
 type RequestListItemProps = {
   request: IRequest,
@@ -40,23 +41,38 @@ const RequestListItem: FC<RequestListItemProps> = ({request}) => {
     }
   }
 
+  const nextStatus = () => {
+    switch (request.requestStatus) {
+      case (0) : return 1
+      case (1) : return 2
+      case (2) : return 4
+      case (3) : return 2
+      case (4) : return 5
+      case (5) : return 5
+    }
+  }
+
+  const getDate = (dateString: string) => new Date(dateString).toLocaleDateString() + ':' + new Date(dateString).toLocaleTimeString();
+
   return (
-    <div>
-      <h3>{request.title}</h3>
+    <div className={classes.list__body__item}>
+      <h2>{request.title}</h2>
       <div>
         <div>
-          <h4>Описание</h4>
+          <h4>Описание:</h4>
           <p>{request.description}</p>
         </div>
+        <hr />
         <div>
           <p>Тип заявки: {request.requestType.name}</p>
         </div>
       </div>
+      <hr />
       <div>
         <h4>Ход работы</h4>
         <div>
-          <p>Дата создания: {request.createdDate}</p>
-          <p>Дата закрытия: {request.closedDate ? request.closedDate : '-'}</p>
+          <p>Дата создания: {getDate(request.createdDate)}</p>
+          <p>Дата закрытия: {request.closedDate ? getDate(request.closedDate) : '-'}</p>
         </div>
         <div>
           <p>Работник: {getEmployeeName()}</p>
@@ -67,14 +83,19 @@ const RequestListItem: FC<RequestListItemProps> = ({request}) => {
             : <></>
           }
         </div>
-        <div>
-          <h4>Статус</h4>
-          <p>{getStatus()}</p>
-          <CustomButton onClick={() => updateStatus(2)}>Продвинуть</CustomButton>
+        <hr />
+        <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <div style={{display: 'flex', alignContent: 'center', gridGap:'10px'}}>
+            <h4 style={{margin: '0 0'}}>Статус</h4>
+            <p style={{margin: '0 0'}}>{getStatus()}</p>
+          </div>
+          <CustomButton onClick={() => updateStatus(nextStatus()!)}>Продвинуть</CustomButton>
         </div>
       </div>
-      <CustomButton onClick={() => updateStatus(3)}>Отменить</CustomButton>
-      <CustomButton onClick={() => setVisible(true)}>Редактировать</CustomButton>
+      <div className={classes.list__body__item__btns}>
+        <CustomButton onClick={() => updateStatus(3)}>Отклонить</CustomButton>
+        <CustomButton onClick={() => setVisible(true)}>Редактировать</CustomButton>
+      </div>
       <ModalWindow visible={visible} setVisible={() => setVisible(false)}>
         <RequestRedactForm request={request}/>
       </ModalWindow>

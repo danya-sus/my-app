@@ -6,6 +6,7 @@ import ModalWindow from '../ui/modal/ModalWindow'
 import NewRequest from './NewRequest'
 import RequestsService from '../../api/RequestService'
 import CustomInput from '../ui/input/CustomInput'
+import classes from './Requests.module.css'
 
 type RequestListProps = {
     requests: IRequest[],
@@ -35,24 +36,26 @@ const RequestList: FC<RequestListProps> = ({...props}) => {
     }
 
     return (
-        <div>
+        <div className={classes.list}>
             {
                 props.residentRequests
                 ?
                 <CustomButton onClick={() => setModalVisible(true)}>Добавить</CustomButton>
                 :
-                <div>
+                <div className={classes.list__filter}>
                     <CustomInput placeholder='Введите комнату' onChange={(e) => {setRoomFilter(e.target.value)}} />
                     <CustomButton onClick={() => {props.fetchRequests(1, 100, roomFilter)}}>Поиск</CustomButton>
                 </div>
             }
-            {
-                props.requests.map((request: IRequest) => 
-                    <RequestListItem 
-                        key={request.id} 
-                        request={request}
-                    />)
-            }
+            <div className={classes.list__body}>
+                {
+                    props.requests.map((request: IRequest) => 
+                        <RequestListItem 
+                            key={request.id} 
+                            request={request}
+                        />)
+                }
+            </div>
             <ModalWindow 
                 visible={modalVisible} 
                 setVisible={() => setModalVisible(false)}
