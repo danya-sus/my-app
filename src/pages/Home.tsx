@@ -17,7 +17,14 @@ const Home: FC = () => {
     }, [])
 
   return (
-    <>
+    <div style={
+        {
+            display: 'flex', 
+            flexDirection: 'column', 
+            justifyContent: 'center', 
+            alignContent: 'center'
+        }
+    }>
         {
             campus
             ?
@@ -28,7 +35,7 @@ const Home: FC = () => {
             </AuthContext.Consumer>
             : <></>
         }
-    </>
+    </div>
   )
 }
 

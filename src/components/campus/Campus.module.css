@@ -1,0 +1,13 @@
+.campus {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.campus__select {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    grid-gap: 30px;
+}
