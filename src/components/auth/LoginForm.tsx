@@ -27,9 +27,6 @@ const LoginForm: FC<LoginFormProps> = ({setLogin, setPassword, loginUser}) => {
         </div>
         <div className={classes.login__form__content__buttons}>
           <CustomButton backgroundColor='rgb(35, 150, 31)' color='white' onClick={loginUser}>Войти</CustomButton>
-          <div onClick={() => navigate('/register')}>
-            <LinkButton>У меня нет аккаунта</LinkButton>
-          </div>
         </div>
       </div>
     </form>
@@ -37,3 +34,10 @@ const LoginForm: FC<LoginFormProps> = ({setLogin, setPassword, loginUser}) => {
 }
 
 export default LoginForm;
+
+
+/*
+          <div onClick={() => navigate('/register')}>
+            <LinkButton>У меня нет аккаунта</LinkButton>
+          </div>
+          */

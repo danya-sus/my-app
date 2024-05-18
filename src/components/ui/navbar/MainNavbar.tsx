@@ -4,6 +4,7 @@ import LinkButton from '../buttons/LinkButton';
 import { AuthContext } from '../../../context/Context';
 import { getRoutesForNavbar } from '../../../routes/Routes';
 import classes from './Navbar.module.css';
+import CustomLink from './CustomLink';
 
 const MainNavbar: FC = () => {
   const {user, isAuth, setIsAuth, setUser} = useContext(AuthContext);
@@ -24,7 +25,7 @@ const MainNavbar: FC = () => {
             ?
             <>
               {
-                routes.map((e) => <NavLink to={e.path} key={e.path} className={classes.navbar__routes__item}>{e.name}</NavLink>)
+                routes.map((e) => <CustomLink to={e.path} key={e.path}>{e.name}</CustomLink>)
               }
             </>
             :

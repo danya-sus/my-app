@@ -40,7 +40,12 @@ const RequestList: FC<RequestListProps> = ({...props}) => {
             {
                 props.residentRequests
                 ?
-                <CustomButton onClick={() => setModalVisible(true)}>Добавить</CustomButton>
+                <div style={{marginBottom:'30px'}}>
+                    <CustomButton 
+                        onClick={() => setModalVisible(true)}
+                        backgroundColor='rgb(197, 197, 197)'
+                    >Добавить</CustomButton>
+                </div>
                 :
                 <div className={classes.list__filter}>
                     <CustomInput placeholder='Введите комнату' onChange={(e) => {setRoomFilter(e.target.value)}} />
@@ -56,6 +61,7 @@ const RequestList: FC<RequestListProps> = ({...props}) => {
                         <RequestListItem 
                             key={request.id} 
                             request={request}
+                            residentReuqest={props.residentRequests}
                         />)
                 }
             </div>
