@@ -1,7 +1,6 @@
 import Residents from "../pages/Residents";
 import Resident from "../pages/Resident";
 import Profile from "../pages/Profile";
-import Things from "../pages/Things";
 import Requests from "../pages/Requests";
 import Employees from "../pages/Employees";
 import RegisterForm from "../components/auth/RegisterForm";
@@ -38,7 +37,7 @@ const getRoutesByRoleForNavbar = (role: string) => {
             return (getCommandantRoutesForNavbar())
         case 'Fixer' : 
             return (getFixerRoutesForNavbar())
-        case 'StudantCouncil' : 
+        case 'StudentCouncil' : 
             return (getStudentCouncilRoutesForNavbar())
         case 'SecurityGuard' : 
             return (getSecurityGuearRoutesForNavbar())
@@ -57,17 +56,17 @@ const getResidentRoutesForNavbar = () => {
             name: "Дом"
         },
         {
-            path: 'profile',
-            name: 'Профиль'
+            path: 'room',
+            name: 'Моя комната'
         },
         {
             path: 'requests',
             name: 'Заявки'
         },
         {
-            path: 'room',
-            name: 'Моя комната'
-        }
+            path: 'profile',
+            name: 'Профиль'
+        },
     ]
 }
 
@@ -78,14 +77,6 @@ const getCommandantRoutesForNavbar = () => {
             name: 'Дом'
         },
         {
-            path: 'profile',
-            name: 'Профиль'
-        },
-        {
-            path: 'requests',
-            name: 'Заявки'
-        },
-        {
             path: 'residents',
             name: 'Проживающие'
         },
@@ -94,38 +85,42 @@ const getCommandantRoutesForNavbar = () => {
             name: 'Работники'
         },
         {
-            path: 'things',
-            name: 'Вещи'
-        },
-        {
             path: 'rooms',
             name: 'Комнаты'
-        }
+        },
+        {
+            path: 'requests',
+            name: 'Заявки'
+        },
+        {
+            path: 'profile',
+            name: 'Профиль'
+        },
     ]
 }
 
 const getStudentCouncilRoutesForNavbar = () => {
     return [
         {
-            path: "requests",
-            name: 'Заявки'
+            path: "home",
+            name: 'Дом'
         },
         {
             path: "residents",
             name: 'Проживающие'
         },
         {
-            path: "home",
-            name: 'Дом'
+            path: "rooms",
+            name: 'Комнаты'
+        },
+        {
+            path: "requests",
+            name: 'Заявки'
         },
         {
             path: "profile",
             name: 'Профиль'
         },
-        {
-            path: "rooms",
-            name: 'Комнаты'
-        }
     ]
 }
 
@@ -156,10 +151,6 @@ const getSupplyManagerRoutesForNavbar = () => {
         {
             path: "rooms",
             name: 'Комнаты'
-        },
-        {
-            path: "things",
-            name: 'Вещи'
         }
     ]
 }
@@ -213,7 +204,7 @@ const getRoutesByRole = (role: string) => {
             return (getCommandantRoutes())
         case 'Fixer' : 
             return (getFixerRoutes())
-        case 'StudantCouncil' : 
+        case 'StudentCouncil' : 
             return (getStudentCouncilRoutes())
         case 'SecurityGuard' : 
             return (getSecurityGuearRoutes())
@@ -275,10 +266,6 @@ const getCommandantRoutes = () => {
         {
             path: 'employee/:id',
             element: <Employee />
-        },
-        {
-            path: 'things',
-            element: <Things />
         },
         {
             path: 'rooms',
@@ -351,10 +338,6 @@ const getSupplyManagerRoutes = () => {
         {
             path: "rooms",
             element: <Blocks />
-        },
-        {
-            path: "things",
-            element: <Things />
         }
     ]
 }
