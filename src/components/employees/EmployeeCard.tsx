@@ -156,12 +156,24 @@ const EmployeeCard: FC<EmployeeCardProps> = ({employee}) => {
                         redactMode
                         ?
                         <div style={{display: 'flex', gridGap: '30px'}}>
-                            <CustomButton onClick={() => {}}>Сохранить</CustomButton>
-                            <CustomButton onClick={() => {setRedactMode(false)}}>Отменить</CustomButton>
+                            <CustomButton 
+                                onClick={() => {}}
+                                backgroundColor='rgb(0, 185, 9)'
+                                color='white'
+                            >Сохранить</CustomButton>
+                            <CustomButton 
+                                onClick={() => {setRedactMode(false)}}
+                                backgroundColor='grey'
+                                color='white'
+                            >Отменить</CustomButton>
                         </div>
                         :
                         <div style={{display: 'flex', justifyContent: 'flex-end'}}>
-                            <CustomButton onClick={() => {setRedactMode(true)}}>Редактировать</CustomButton>
+                            <CustomButton 
+                                onClick={() => {setRedactMode(true)}}
+                                backgroundColor='grey'
+                                color='white'
+                            >Редактировать</CustomButton>
                         </div>
                     }
             </div>

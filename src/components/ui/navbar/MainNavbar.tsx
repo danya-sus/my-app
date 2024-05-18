@@ -6,7 +6,7 @@ import { getRoutesForNavbar } from '../../../routes/Routes';
 import classes from './Navbar.module.css';
 
 const MainNavbar: FC = () => {
-  const {user, isAuth, setIsAuth} = useContext(AuthContext);
+  const {user, isAuth, setIsAuth, setUser} = useContext(AuthContext);
   const [routes, setRoutes] = useState<{path: string, name: string}[]>();
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const MainNavbar: FC = () => {
               <NavLink to='register' className={classes.navbar__auth__btn}>Регистрация</NavLink>
             </>
             :
-            <NavLink to='/' onClick={() => {localStorage.clear(); setIsAuth(false)}} className={classes.navbar__auth__logout}>
+            <NavLink to='/' onClick={() => {localStorage.clear(); setIsAuth(false); setRoutes([])}} className={classes.navbar__auth__logout}>
               Выход
             </NavLink>
           }

@@ -66,7 +66,11 @@ const RequestRedactForm: FC<RequestRedactFormProps> = ({...props}) => {
                         />
                     </div>
                     <div className={classes.redactForm__btn}>
-                        <CustomButton onClick={saveRequest}>Отправить</CustomButton>
+                        <CustomButton 
+                            onClick={saveRequest}
+                            backgroundColor='rgb(0, 185, 9)'
+                            color='white'
+                        >Отправить</CustomButton>
                     </div>
                 </>
                 :

@@ -33,13 +33,13 @@
     grid-gap: 10px;
 }
 
-.blockCard__rooms > p {
+.blockCard__rooms_room {
     border: 1px solid grey;
     padding: 10px 20px;
     border-radius: 1rem;
 }
 
-.blockCard__rooms > p:hover {
+.blockCard__rooms_room:hover {
     border: 1px solid black;
     cursor: pointer;
 }
@@ -66,46 +66,14 @@
     width: 100%;
 }
 
-.blockItem_raiting_0 {
-    color: red;
+.residentRoom {
+    box-shadow: 0 0 5px grey;
+    border-radius: 1rem;
+    padding: 10px 30px;
+    min-width: 400px;
 }
 
-.blockItem_raiting_1 {
-    color: red;
-}
-
-.blockItem_raiting_2 {
-    color: red;
-}
-
-.blockItem_raiting_3 {
-    color: red;
-}
-
-.blockItem_raiting_4 {
-    color: red;
-}
-
-.blockItem_raiting_5 {
-    color: red;
-}
-
-.blockItem_raiting_6 {
-    color: red;
-}
-
-.blockItem_raiting_7 {
-    color: red;
-}
-
-.blockItem_raiting_8 {
-    color: red;
-}
-
-.blockItem_raiting_9 {
-    color: red;
-}
-
-.blockItem_raiting_10 {
-    color: green;
+.residentRoom__item {
+    display: flex;
+    justify-content: space-between;
 }

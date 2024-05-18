@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import { Calendar } from 'react-calendar';
-import classes from './MyCalendar.module.css';
+import './MyCalendar.css';
 
 type CalendarProps = {
     locale?: string,
@@ -17,7 +17,7 @@ const MyCalendar: FC<CalendarProps> = ({...props}) => {
                 value={props.value} 
                 maxDate={new Date()}
                 onClickDay={props.onClickDay}
-                className={classes.myCalendar}
+                className="Calendar"
             />
         </>
     )

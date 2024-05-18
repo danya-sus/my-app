@@ -53,7 +53,6 @@ const RegisterForm: FC<RegisterFormProps> = ({}) => {
       <div className={classes.register__form__content}>
         <div className={classes.register__form__content__header}>
           <h2>Регистрация</h2>
-          <CrossButton onClick={() => {}}/>
         </div>
         <hr />
         <div className={classes.register__form__content__body}>

@@ -18,7 +18,12 @@ const BlockCard: FC<BlockCardProps> = ({...props}) => {
             <hr />
             <div className={classes.blockCard__rooms}>
                 {
-                    props.rooms.map((e) => <p onClick={() => setRoom(e)} key={e.id}>{e.block}{e.blockCode}</p>)
+                    props.rooms.map((e) => 
+                        <p 
+                            onClick={() => {setRoom(e);}} 
+                            key={e.id} 
+                            className={classes.blockCard__rooms_room}
+                        >{e.block}{e.blockCode}</p>)
                 }
             </div>
             <hr />

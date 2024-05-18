@@ -89,12 +89,24 @@ const RequestListItem: FC<RequestListItemProps> = ({request}) => {
             <h4 style={{margin: '0 0'}}>Статус</h4>
             <p style={{margin: '0 0'}}>{getStatus()}</p>
           </div>
-          <CustomButton onClick={() => updateStatus(nextStatus()!)}>Продвинуть</CustomButton>
+          <CustomButton 
+            onClick={() => updateStatus(nextStatus()!)}
+            backgroundColor='rgb(0, 185, 9)'
+            color='white'
+          >Продвинуть</CustomButton>
         </div>
       </div>
       <div className={classes.list__body__item__btns}>
-        <CustomButton onClick={() => updateStatus(3)}>Отклонить</CustomButton>
-        <CustomButton onClick={() => setVisible(true)}>Редактировать</CustomButton>
+        <CustomButton 
+          onClick={() => updateStatus(3)}
+          backgroundColor='rgb(236, 0, 0)'
+          color='white'
+        >Отклонить</CustomButton>
+        <CustomButton 
+          onClick={() => setVisible(true)}
+          backgroundColor='grey'
+          color='white'
+        >Редактировать</CustomButton>
       </div>
       <ModalWindow visible={visible} setVisible={() => setVisible(false)}>
         <RequestRedactForm request={request}/>

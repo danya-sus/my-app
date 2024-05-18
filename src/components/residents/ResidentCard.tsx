@@ -175,13 +175,29 @@ const ResidentCard: FC<ResidentCardProps> = ({resident}) => {
                     redactMode
                     ?
                     <div className={classes.resident__card__btns}>
-                        <CustomButton onClick={() => updateResident()}>Сохранить</CustomButton>
-                        <CustomButton onClick={() => setRedactMode(false)}>Отмена</CustomButton>
+                        <CustomButton 
+                            onClick={() => updateResident()}
+                            backgroundColor='rgb(0, 185, 9)'
+                            color='white'
+                        >Сохранить</CustomButton>
+                        <CustomButton 
+                            onClick={() => setRedactMode(false)}
+                            backgroundColor='grey'
+                            color='white'
+                        >Отмена</CustomButton>
                     </div>
                     :
                     <div className={classes.resident__card__btns}>
-                        <CustomButton onClick={() => {setRedactMode(true)}}>Редактировать</CustomButton>
-                        <CustomButton onClick={deleteResident}>Удалить</CustomButton>
+                        <CustomButton 
+                            onClick={() => {setRedactMode(true)}}
+                            backgroundColor='grey'
+                            color='white'
+                        >Редактировать</CustomButton>
+                        <CustomButton 
+                            onClick={deleteResident}
+                            backgroundColor='rgb(236, 0, 0)'
+                            color='white'
+                        >Удалить</CustomButton>
                     </div>
                 }
             </div>

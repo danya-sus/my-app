@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import { IRoom } from '../../contracts/Contracts'
+import classes from './Rooms.module.css'
 
 type RoomInfoProps = {
     room: IRoom
@@ -9,16 +10,17 @@ const RoomInfo: FC<RoomInfoProps> = ({room}) => {
     const getDate = (dateString: string) => new Date(dateString).toLocaleDateString();
 
     return (
-        <div>
+        <div className={classes.residentRoom}>
             <div>
                 <h3>{room.block}{room.blockCode}</h3>
             </div>
+            <hr />
             <div>
-                <div>
+                <div className={classes.residentRoom__item}>
                     <p>Рейтинг комнаты:</p>
                     <p>{room.roomRating}</p>
                 </div>
-                <div>
+                <div className={classes.residentRoom__item}>
                     <p>Дата ремонта:</p>
                     <p>{getDate(room.repairDate)}</p>
                 </div>

@@ -117,11 +117,23 @@ const BlockCardRoom: FC<BlockCardRoomProps> = ({...props}) => {
                 redactMode
                 ?
                 <div className={classes.blockCardRoom__btns}>
-                    <CustomButton onClick={() => updateRoom()}>Сохранить</CustomButton>
-                    <CustomButton onClick={() => setRedactMode(false)}>Отменить</CustomButton>
+                    <CustomButton 
+                        onClick={() => updateRoom()}
+                        backgroundColor='rgb(0, 185, 9)'
+                        color='white'
+                    >Сохранить</CustomButton>
+                    <CustomButton 
+                        onClick={() => setRedactMode(false)}
+                        backgroundColor='grey'
+                        color='white'
+                    >Отменить</CustomButton>
                 </div>
                 :
-                <CustomButton onClick={() => setRedactMode(true)}>Редактировать</CustomButton>
+                <CustomButton 
+                    onClick={() => setRedactMode(true)}
+                    backgroundColor='grey'
+                    color='white'
+                >Редактировать</CustomButton>
             }
         </div>
     )

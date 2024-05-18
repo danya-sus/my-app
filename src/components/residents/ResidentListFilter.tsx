@@ -46,8 +46,9 @@ const ResidentListFilter: FC<ResidentListFilterProps> = ({...props}) => {
                     props.setSkipCount(1);
                     props.setTakeCount(10);
                     props.fetchResidents();
-                }
-            }>Поиск</CustomButton>
+                }}
+                backgroundColor='rgb(197, 197, 197)'
+                >Поиск</CustomButton>
         </div>
     )
 }

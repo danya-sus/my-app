@@ -44,7 +44,10 @@ const RequestList: FC<RequestListProps> = ({...props}) => {
                 :
                 <div className={classes.list__filter}>
                     <CustomInput placeholder='Введите комнату' onChange={(e) => {setRoomFilter(e.target.value)}} />
-                    <CustomButton onClick={() => {props.fetchRequests(1, 100, roomFilter)}}>Поиск</CustomButton>
+                    <CustomButton 
+                        onClick={() => {props.fetchRequests(1, 100, roomFilter)}}
+                        backgroundColor='rgb(197, 197, 197)'
+                    >Поиск</CustomButton>
                 </div>
             }
             <div className={classes.list__body}>

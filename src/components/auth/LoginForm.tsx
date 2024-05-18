@@ -19,7 +19,6 @@ const LoginForm: FC<LoginFormProps> = ({setLogin, setPassword, loginUser}) => {
       <div className={classes.login__form__content}>
         <div className={classes.login__form__content__header}>
           <h2>Авторизация</h2>
-          <CrossButton onClick={() => {}}/>
         </div>
         <hr />
         <div className={classes.login__form__content__body}>

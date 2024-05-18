@@ -3,6 +3,10 @@
     grid-gap: 20px;
 }
 
+.employee > hr {
+    margin: 0 0;
+}
+
 .employee__body {
     width: 600px;
 }

@@ -21,7 +21,7 @@ const ResidentRoom : FC<ResidentRoomProps> = () => {
   }, [])
 
   return (
-    <>
+    <div style={{display: 'flex', justifyContent: 'center'}}>
       {
         room
         ?
@@ -29,7 +29,7 @@ const ResidentRoom : FC<ResidentRoomProps> = () => {
         :
         <></>
       }
-    </>
+    </div>
   )
 }
 

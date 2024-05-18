@@ -35,10 +35,15 @@ const Employee: FC = () => {
             {
                 employee
                 ?
-                <>
-                    <CustomButton onClick={goBack}>Назад</CustomButton>
+                <div style={{display: 'flex', justifyContent: 'center', flexDirection:'column', alignItems: 'center'}}>
+                    <div style={{paddingRight: '1000px', marginBottom: '50px'}}>
+                        <CustomButton 
+                            onClick={goBack}
+                            backgroundColor='rgb(197, 197, 197)'
+                        >Назад</CustomButton>
+                    </div>
                     <EmployeeCard employee={employee} />
-                </>
+                </div>
                 :
                 <></>
             }

@@ -1,0 +1,15 @@
+.react-calendar__month-view__weekdays__weekday > abbr {
+  text-decoration: none;
+}
+
+.react-calendar__month-view__days__day {
+  border: 1px solid grey;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.react-calendar__month-view__days__day:hover {
+  background-color: grey;
+  color: white;
+  transition: ease-in-out all 0.2s;
+}
