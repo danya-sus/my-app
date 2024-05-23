@@ -264,7 +264,7 @@ const getCommandantRoutes = () => {
             element: <Employees />
         },
         {
-            path: 'employee/:id',
+            path: 'employees/:id',
             element: <Employee />
         },
         {

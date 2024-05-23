@@ -16,7 +16,7 @@ const EmployeeListItem: FC<EmployeeListItemProps> = ({...props}) => {
         <td><p>{props.employee.campuses.map((e) => e.name).join(', ')}</p></td>
         <td><p>{props.employee.professions.map((e) => e.name).join(', ')}</p></td>
         <td>
-            <Link to={`/employee/${props.employee.id}`}>
+            <Link to={`/employees/${props.employee.id}`}>
                 <LinkButton>Подробнее</LinkButton>
             </Link>
         </td>

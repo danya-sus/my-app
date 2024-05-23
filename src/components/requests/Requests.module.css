@@ -47,3 +47,19 @@
     display: flex;
     justify-content: flex-end;
 }
+
+.newRequest {
+    background-color: white;
+    width: 500px;
+    padding: 10px 30px;
+    border-radius: 1rem;
+}
+
+.newRequest > textarea {
+    width: 100%;
+}
+
+.newRequest__btns {
+    display: flex;
+    justify-content: flex-end;
+}

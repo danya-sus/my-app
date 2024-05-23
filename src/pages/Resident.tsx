@@ -34,10 +34,12 @@ const Resident: FC = () => {
                 resident
                 ? 
                 <div>
-                    <div style={{paddingLeft: '500px', marginBottom: '50px'}}>
-                        <CustomButton onClick={goBack}>Назад</CustomButton>
+                    <div style={{display: 'flex', justifyContent: 'center', flexDirection:'column', alignItems: 'center'}}>
+                        <div style={{paddingRight: '1000px', marginBottom: '50px'}}>
+                            <CustomButton onClick={goBack}>Назад</CustomButton>
+                        </div>
+                        <ResidentCard resident={resident} />
                     </div>
-                    <ResidentCard resident={resident} />
                 </div>
                 :
                 <></>
