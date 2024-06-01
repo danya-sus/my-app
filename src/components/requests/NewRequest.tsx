@@ -5,6 +5,7 @@ import CustomSelect from '../ui/select/CustomSelect';
 import CustomInput from '../ui/input/CustomInput';
 import TextAreaInput from '../ui/input/TextAreaInput';
 import CustomButton from '../ui/buttons/CustomButton';
+import classes from './Requests.module.css';
 
 type NewRequestProps = {
     sendNewRequest: (request: IAddRequest) => any
@@ -40,7 +41,7 @@ const NewRequest: FC<NewRequestProps> = ({...props}) => {
     }, [])
 
     return (
-        <div style={{backgroundColor: 'white'}}>
+        <div className={classes.newRequest}>
             {
                 requestTypes
                 ?
@@ -70,7 +71,9 @@ const NewRequest: FC<NewRequestProps> = ({...props}) => {
                             />
                         </div>
                     </div>
-                    <CustomButton onClick={sendRequest}>Отправить</CustomButton>
+                    <div className={classes.newRequest__btns}>
+                        <CustomButton backgroundColor='rgb(0, 185, 9)' color='white' onClick={sendRequest}>Отправить</CustomButton>
+                    </div>
                 </>
                 : <></>
             }

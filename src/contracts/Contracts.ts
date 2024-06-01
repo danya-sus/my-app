@@ -4,15 +4,6 @@ export interface LoginInfo {
     password: string
 };
 
-export interface RegisterInfo {
-    email: string,
-    password: string,
-    firstName: string,
-    lastName: string,
-    middleName?: string,
-    birthDate: string,
-};
-
 export interface LoginResult {
     isSuccess: boolean
 }
@@ -25,6 +16,15 @@ export interface PagingParams {
 export interface IUserParams extends PagingParams {
     FullName?: string,
 }
+
+export interface RegisterInfo {
+    email: string,
+    password: string,
+    firstName: string,
+    lastName: string,
+    middleName?: string,
+    birthDate: string,
+};
 
 export interface IAddress {
     country: string,
@@ -230,15 +230,6 @@ export interface IRoom {
     roomRating: string
 }
 
-enum RequestStatus {
-    Created,
-    Pending,
-    OnRevision,
-    Cancelled,
-    InProgress,
-    Completed
-}
-
 export interface IUser {
     id: string,
     firstName: string,
@@ -252,4 +243,13 @@ export interface IUser {
 export interface IRole {
     id: string,
     name: string
+}
+
+enum RequestStatus {
+    Created,
+    Pending,
+    OnRevision,
+    Cancelled,
+    InProgress,
+    Completed
 }
